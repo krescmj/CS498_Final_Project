@@ -105,12 +105,13 @@
 			d3.csv('./data/payroll.csv',
 				function(error, dataset)
 				{
+					console.log(error);
+				
 					// cast to an integer
 					dataset.forEach(function(d) {
 						d.payroll = +d.count;
 						d.year = +d.year;
-						console.log(d.payroll);
-						console.log(d.year);
+						console.log(d);
 					});
 				}	
 			);
