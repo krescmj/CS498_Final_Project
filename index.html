@@ -109,7 +109,7 @@
 				
 					// cast to an integer
 					dataset.forEach(function(d) {
-						d.payroll = +d.count;
+						d.payroll = +d.payroll;
 						d.year = +d.year;
 						console.log(d);
 					});
