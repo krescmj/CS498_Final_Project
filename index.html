@@ -68,7 +68,7 @@
     </nav>
 
     <!-- Begin page content -->
-    <div class="container">
+    <div class="container" id="data_viz">
       <div class="page-header">
         <h1>Sticky footer with fixed navbar</h1>
       </div>
@@ -105,12 +105,19 @@
   		<script>
 		
 			var svg = d3.select("svg");
+			
+			console.log(document.getElementById("data_viz").clientWidth);
+			console.log(document.getElementById("data_viz").offsetWidth);
+			
+			//var mydiv = document.getElementById("mydiv");
+//var curr_width = parseInt(mydiv.style.width); // removes the "px" at the end
+			
+			//console.log(svg.attr("width"));
+			//console.log(svg.attr("height"));
 		
 			d3.csv('./data/payroll.csv',
 				function(error, dataset)
 				{
-					console.log(error);
-				
 					// cast to an integer
 					dataset.forEach(function(d) {
 						d.payroll = +d.payroll;
