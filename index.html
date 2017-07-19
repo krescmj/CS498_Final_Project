@@ -74,7 +74,9 @@
       </div>
 	  
 	  <div>
-
+		<svg viewBox="0 0 100 100" >
+			<circle cx="100" cy="100" r="100"/>
+		</svg>
 	  
 	      my test
 	  </div>
@@ -102,6 +104,8 @@
   
   		<script>
 		
+			var svg = d3.select("svg");
+		
 			d3.csv('./data/payroll.csv',
 				function(error, dataset)
 				{
@@ -113,6 +117,10 @@
 						d.year = +d.year;
 						console.log(d);
 					});
+					
+
+					
+					
 				}	
 			);
 		</script>
