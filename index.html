@@ -142,12 +142,12 @@
 					console.log(payrolls);
 					var x = d3.scale.linear().domain([d3.min(payrolls), d3.max(payrolls)]).range([0, svg.attr("width") ]);
 					
-					//svg.data(dataset)
-					//   .enter()
-					//   .append("circle")
-					//   .attr("r", 30)
-					//   .attr("cx", 50)
-					//   .attr("cy", 
+					svg.data(dataset)
+					   .enter()
+					   .append("circle")
+					   .attr("r", 30)
+					   .attr("cx", 50)
+					   .attr("cy", 10)
 					
 					var force = d3.layout.force()
 								.nodes(dataset)
