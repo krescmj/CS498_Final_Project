@@ -178,7 +178,8 @@
 								function()
 								{
 									console.log("got here")
-									node.attr('cx', function(d) { console.log(d.x); return d.x; })
+									node.append('circle')
+										.attr('cx', function(d) { console.log(d.x); return d.x; })
 										.attr('cy', function(d) { console.log(d.y); return d.y; })
 										.attr('fill', 'red')
 										.attr('r', function(d) { console.log(d.y); return (d.wins/162) * 60; });
