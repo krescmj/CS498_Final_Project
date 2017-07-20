@@ -121,22 +121,25 @@
 			//var mydiv = document.getElementById("mydiv");
 //var curr_width = parseInt(mydiv.style.width); // removes the "px" at the end
 			
-			console.log(svg.attr("width"));
-			console.log(svg.attr("height"));
+			//console.log(svg.attr("width"));
+			//console.log(svg.attr("height"));
 		
 			d3.csv('./data/payroll.csv',
 				function(error, dataset)
 				{
 					console.log(error);
 				
+					var payrolls = []
+				
 					// cast to an integer
 					dataset.forEach(function(d) {
 						d.payroll = +d.payroll;
 						d.year = +d.year;
+						payrolls.push(d.payroll)
 						console.log(d);
 					});
 					
-					var x = d3.scale.linear().domain([d3.min(dataset.payroll), d3.max(dataset.payroll)]).range([0, svg.attr("width") ]);
+					var x = d3.scale.linear().domain([d3.min(payrolls), d3.max(payrolls)]).range([0, svg.attr("width") ]);
 					
 					//svg.data(dataset)
 					//   .enter()
