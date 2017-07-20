@@ -105,8 +105,8 @@
   		<script>
 		
 			var svg = d3.select("#data_viz_svg"),
-                width = document.getElementById("data_viz_svg")).width,
-			    height = document.getElementById("data_viz_svg")).height;
+                width = window.getComputedStyle(document.getElementById("data_viz_svg")).width,
+			    height = window.getComputedStyle(document.getElementById("data_viz_svg")).height;
 			
 			svg.attr("height", height);
 			svg.attr("width", width);
