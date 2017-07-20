@@ -158,7 +158,7 @@
 					   //.attr("cy", 10);
 					
 					var force = d3.layout.force()
-					            .size([3000, 6000])
+					            .size([width, height])
 								.nodes(dataset)
 								.gravity(.02)
 								.charge(0);
@@ -169,10 +169,10 @@
 								  .data(dataset)
 					              .enter()
 								  .append('circle')
-								  .attr("r", 1)
-								  .attr('cx', 30)
-								  .attr('cy', 20)
-								  .attr('fill', 'blue');
+								  .attr("r", 1);
+								  //.attr('cx', 30)
+								  //.attr('cy', 20)
+								  //.attr('fill', 'blue');
 					   
 					force.on('end', 
 								function()
