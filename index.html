@@ -165,6 +165,7 @@
 					force.on('end', 
 								function()
 								{
+									console.log("got here")
 									node.attr('cx', function(d) { return d.x; })
 										.attr('cy', function(d) { return d.y; })
 										.attr('fill', "red");
