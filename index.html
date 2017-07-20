@@ -111,8 +111,8 @@
 			svg.attr("height", height);
 			svg.attr("width", width);
 			
-			console.log(width);
-			console.log(height);
+			console.log(svg.attr('width'));
+			console.log(svg.attr('height'));
 			
 			
 			
@@ -169,7 +169,7 @@
 								  .data(dataset)
 					              .enter()
 								  .append('circle')
-								  .attr("r", 2)
+								  .attr("r", 10)
 								  .attr("cx", 30)
 								  .attr("cy", 20)
 								  .attr('fill', 'blue');
