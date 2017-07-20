@@ -161,7 +161,9 @@
 								  .data(dataset)
 					              .enter()
 								  .append('circle')
-								  .attr("r", 50);
+								  .attr("r", 2)
+								  .attr("cx", 30)
+								  .attr("cy", 20);
 					   
 					force.on('end', 
 								function()
