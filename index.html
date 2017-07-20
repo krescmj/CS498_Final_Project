@@ -137,14 +137,14 @@
 				{
 					console.log(error);
 				
-					var payrolls = []
+					var payrolls = [];
 				
 					// cast to an integer
 					dataset.forEach(function(d) {
 						d.payroll = +d.payroll;
 						d.year = +d.year;
-						payrolls.push(d.payroll)
-						//console.log(d);
+						payrolls.push(d.payroll);
+						console.log(d);
 					});
 					
 					//console.log(payrolls);
