@@ -74,8 +74,8 @@
       </div>
 	  
 	  <div>
-		<svg viewBox="0 0 100 100" >
-			<circle cx="100" cy="100" r="100"/>
+		<svg viewBox="0 0 100 100" id="data_viz_svg">
+		
 		</svg>
 	  
 	      my test
@@ -104,20 +104,31 @@
   
   		<script>
 		
-			var svg = d3.select("svg");
+			var svg = d3.select("#data_viz_svg");
+			svg.attr("height", document.getElementById("data_viz").offsetHeight)
+			svg.attr("width", document.getElementById("data_viz").offsetWidth)
 			
-			console.log(document.getElementById("data_viz").clientWidth);
-			console.log(document.getElementById("data_viz").offsetWidth);
+			width = svg.attr("width")
+			height = svg.attr("height")
+			
+			//console.log(document.getElementById("data_viz").clientWidth);
+			//console.log(document.getElementById("data_viz").offsetHeight);
+			
+			//setAttribute("height", "10px");
+			
+			//console.log
 			
 			//var mydiv = document.getElementById("mydiv");
 //var curr_width = parseInt(mydiv.style.width); // removes the "px" at the end
 			
-			//console.log(svg.attr("width"));
-			//console.log(svg.attr("height"));
+			console.log(svg.attr("width"));
+			console.log(svg.attr("height"));
 		
 			d3.csv('./data/payroll.csv',
 				function(error, dataset)
 				{
+					console.log(error);
+				
 					// cast to an integer
 					dataset.forEach(function(d) {
 						d.payroll = +d.payroll;
@@ -125,8 +136,37 @@
 						console.log(d);
 					});
 					
-
+					var x = d3.scale.linear().domain( [d3.min(dataset.payroll), d3.max(dataset.payroll) ).range( [0, svg.attr("width") ] );
 					
+					//svg.data(dataset)
+					//   .enter()
+					//   .append("circle")
+					//   .attr("r", 30)
+					//   .attr("cx", 50)
+					//   .attr("cy", 
+					
+					var force = d3.layout.force()
+								.nodes(dataset)
+								.size([width, height])
+								.gravity(.02)
+								.charge(0);
+								//.on("tick", tick)
+								//.start();
+								
+			        var node = svg.data(dataset)
+					              .enter()
+								  .append('circle')
+								  .attr("r", 10);
+					   
+					force.on('end', 
+								function()
+								{
+									node.attr('cx', function(d) { return d.x; })
+										.attr('cy', function(d) { return d.y; });
+								}
+							);
+							
+				    force.start()
 					
 				}	
 			);
