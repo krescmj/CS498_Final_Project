@@ -139,10 +139,10 @@
 						d.payroll = +d.payroll;
 						d.year = +d.year;
 						payrolls.push(d.payroll)
-						console.log(d);
+						//console.log(d);
 					});
 					
-					console.log(payrolls);
+					//console.log(payrolls);
 					var x = d3.scale.linear().domain([d3.min(payrolls), d3.max(payrolls)]).range([0, svg.attr("width") ]);
 					
 					//svg.data(dataset)
