@@ -167,9 +167,9 @@
 								
 			        var node = svg.selectAll('circle')
 								  .data(dataset)
-					              .enter()
-								  .append('circle')
-								  .attr('r', 20);
+					              .enter();
+								  //.append('circle')
+								  //.attr('r', 20);
 								  //.attr('cx', 30)
 								  //.attr('cy', 20)
 								  //.attr('fill', 'blue');
@@ -180,7 +180,8 @@
 									console.log("got here")
 									node.attr('cx', function(d) { console.log(d.x); return d.x; })
 										.attr('cy', function(d) { console.log(d.y); return d.y; })
-										.attr('fill', 'red');
+										.attr('fill', 'red')
+										.attr('r', function(d) { console.log(d.y); return (d.wins/162) * 60; });
 										
 								}
 							);
