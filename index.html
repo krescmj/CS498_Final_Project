@@ -140,8 +140,8 @@
 					var x_scale = d3.scale.linear().range([0, width]);
 					var y_scale = d3.scale.linear().range([0, height]);										  
 								
-				    var xAxis = d3.svg.axis().scale(x_scale).orient("bottom");
-					var yAxis = d3.svg.axis().scale(y_scale).orient("left");
+				    var xAxis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(5);
+					var yAxis = d3.svg.axis().scale(y_scale).orient("left").ticks(10);
 					
 					x_scale.domain([ d3.min(dataset, function (d) { return d.payroll; }) - radius, 
 							         d3.max(dataset, function (d) { return d.payroll; }) + radius])		
@@ -150,12 +150,12 @@
 								     d3.min(dataset, function (d) { return d.wins; }) + radius])
 					svg.append("g")
 					     .attr("class", "x axis")
-					     .attr("transform", "translate(0," + height + ")")
+					     //.attr("transform", "translate(0," + height + ")")
 						 .call(xAxis)
 						 .append("text")
-						 .attr("x", margin.left)
-						 .attr("y", -margin.top/3)
-						 .text("Test x");
+						 //.attr("x", margin.left)
+						 //.attr("y", height + 6)
+						 //.text("Test x");
 
 					 svg.append("g")
 						 .attr("class", "y axis")
