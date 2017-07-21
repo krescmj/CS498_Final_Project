@@ -126,8 +126,8 @@
 			var margin = {top: 20, right: 20, bottom: 30, left: 40};
 		
 			var svg = d3.select("#data_viz_svg")
-			            .attr("height", parseInt(window.getComputedStyle(document.getElementById("data_viz")).height) + margin.bottom)
-			            .attr("width", parseInt(window.getComputedStyle(document.getElementById("data_viz")).width) + margin.right)
+			            .attr("height", parseInt(window.getComputedStyle(document.getElementById("data_viz")).height))
+			            .attr("width", parseInt(window.getComputedStyle(document.getElementById("data_viz")).width))
 						.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 			
             var    width = svg.attr("width") - margin.left - margin.right;
