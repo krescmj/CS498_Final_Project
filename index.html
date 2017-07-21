@@ -173,17 +173,17 @@
 					var force = d3.layout.force()
 					            .size([width, height])
 								.nodes(dataset)
-								.gravity(1.0)
+								//.gravity(1.0)
 								.charge(-10);
 								//.on("tick", tick)
 								//.start();
 								
 			        var node = svg.selectAll('circle')
 								  .data(dataset)
-					              .enter();
-								  //.append('circle')
+					              .enter()
+								  .append('circle')
 								  //.attr('r', 20);
-								  //.attr('cx', 30)
+								  .attr('cx', function(d) { return x_scale(d.payroll); });
 								  //.attr('cy', 20)
 								  //.attr('fill', 'blue');
 					   
@@ -194,7 +194,7 @@
 									svg.call(xAxis);
 									
 									node.append('circle')
-										.attr('cx', function(d) { return x_scale(d.payroll); })
+										//.attr('cx', function(d) { return x_scale(d.payroll); })
 										.attr('cy', function(d) { return d.y; })
 										.attr('fill', 'red')
 										.attr('r', function(d) { console.log(r_scale(d.wins)); return r_scale(d.wins); });
