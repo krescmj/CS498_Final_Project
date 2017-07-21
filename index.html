@@ -172,6 +172,7 @@
 					     .attr("transform", "translate(0," + height + ")")
 						 .call(xAxis)
 						 .append("text")
+						 .attr("class", "label")
 						 .style("text-anchor", "middle")
 						 .attr("x", width/2)
 						 .attr("y", 25)
@@ -180,12 +181,13 @@
 					svg.append("g")
 						 .attr("class", "y axis")
 						 .call(yAxis)
-						 .attr("transform", "rotate(-90)")
 						 .append("text")
+						 .attr("class", "label")
+						 .attr("transform", "rotate(-90)")
 					//	 .attr("x", margin.left/3)
 					//	 .attr("y", margin.top)
 					     .style("text-anchor", "middle")
-						 .text("Test y");
+						 .text("Number of Wins");
 					
 								
 			        svg.selectAll('circle')
