@@ -163,8 +163,8 @@
 					x_scale.domain([ d3.min(dataset, function (d) { return d.payroll; }) + radius, 
 							         d3.max(dataset, function (d) { return d.payroll; }) - radius])		
 
-					y_scale.domain([ d3.max(dataset, function (d) { return d.wins; }) + radius, 
-								     d3.min(dataset, function (d) { return d.wins; }) - radius])
+					y_scale.domain([ d3.min(dataset, function (d) { return d.wins; }) + radius, 
+								     d3.max(dataset, function (d) { return d.wins; }) - radius])
 					svg.append("g")
 					     .attr("class", "x axis")
 					     .attr("transform", "translate(0," + height + ")")
@@ -182,11 +182,11 @@
 						 .append("text")
 						 .attr("class", "label")
 						 .attr("transform", "rotate(-90)")
-						 .attr("y", 60)
+						 .attr("y", 60);
 					//	 .attr("y", margin.top)
-					     .style("text-anchor", "middle")
+					//     .style("text-anchor", "middle")
 					//	 .attr("x", height/2)
-						 .text("Number of Wins");
+					//	 .text("Number of Wins");
 					
 								
 			        svg.selectAll('circle')
