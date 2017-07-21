@@ -188,7 +188,7 @@
 									svg.call(xAxis);
 									
 									node.append('circle')
-										.attr('cx', function(d) { console.log(d.x); return d.x; })
+										.attr('cx', function(d) { console.log(d.x); return x(d.payroll); })
 										.attr('cy', function(d) { console.log(d.y); return d.y; })
 										.attr('fill', 'red')
 										.attr('r', function(d) { console.log(d.y); return (d.wins/162) * 40; });
