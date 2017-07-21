@@ -139,7 +139,7 @@
 				
 		    var x_scale = d3.scale.linear().range([0, width]),
 				x_axis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(5),
-			    y_scale = d3.scale.linear().range([0, height]),
+			    y_scale = d3.scale.linear().range([height, 0]),
 				y_axis = d3.svg.axis().scale(y_scale).orient("left");
 				
 			//svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -169,8 +169,8 @@
 					x_scale.domain([ d3.min(dataset, function (d) { return d.payroll; }), 
 							         d3.max(dataset, function (d) { return d.payroll; })]);	
 
-					y_scale.domain([ d3.max(dataset, function (d) { return d.wins; }), 
-								     d3.min(dataset, function (d) { return d.wins; })]);
+					y_scale.domain([ d3.min(dataset, function (d) { return d.wins; }), 
+								     d3.max(dataset, function (d) { return d.wins; })]);
 					svg.append("g")
 					     .attr("class", "x axis")
 					     .attr("transform", "translate(0," + height + ")")
@@ -179,7 +179,7 @@
 						 .attr("class", "label")
 						 .style("text-anchor", "middle")
 						 .attr("x", width/2)
-						 .attr("y", 30)
+						 .attr("y", 6)
 						 .text("Payroll (dollars)");
 
 					svg.append("g")
