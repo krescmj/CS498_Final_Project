@@ -229,11 +229,24 @@
 				            tooltip.html( "<b> Team Name: </b>"+ d.team )
                                    .style("left", (d3.event.pageX + 5) + "px")
                                    .style("top", (d3.event.pageY - 28) + "px");
-								   
-						    console.log(d.payroll)
+							
+							svg.selectAll('circle')
+							   .data.filter( function(circle_d){return circle_d.team == d.team;} )
+							   .append('line')
+							   .attr('x1', (d3.event.pageX + 5))
+							   .attr('x2', x_scale(d.payroll))
+							   .attr('y1', (d3.event.pageY - 28))
+							   .attr('y2', y_scale(d.wins))
+	
+							
+							
                           })
 					   .on("mouseout", function(d) {
                             tooltip.transition()
+                                   .duration(500)
+                                   .style("opacity", 0);
+								   
+						    svg.selectAll('line').transition()
                                    .duration(500)
                                    .style("opacity", 0);
                           })		
