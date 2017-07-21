@@ -123,16 +123,19 @@
   
   		<script>
 		
-			var svg = d3.select("#data_viz_svg");
-			svg.attr("height", parseInt(window.getComputedStyle(document.getElementById("data_viz")).height));
-			svg.attr("width", parseInt(window.getComputedStyle(document.getElementById("data_viz")).width));
+			var margin = {top: 20, right: 20, bottom: 30, left: 40},
+		
+			var svg = d3.select("#data_viz_svg"),
+			            .attr("height", parseInt(window.getComputedStyle(document.getElementById("data_viz")).height)),
+			            .attr("width", parseInt(window.getComputedStyle(document.getElementById("data_viz")).width)),
+						.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 			//svg.attr("height", )
 			
-			var margin = {top: 20, right: 20, bottom: 30, left: 40},
-                width = svg.attr("width") - margin.left - margin.right,
-                height = svg.attr("height") - margin.top - margin.bottom;
+			//var margin = {top: 20, right: 20, bottom: 30, left: 40},
+            var    width = svg.attr("width") - margin.left - margin.right,
+            var    height = svg.attr("height") - margin.top - margin.bottom;
 				
-			g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+			//svg = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 				
 		    var x_scale = d3.scale.linear().range([0, width]),
 				x_axis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(5),
