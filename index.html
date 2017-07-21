@@ -167,8 +167,8 @@
 					var force = d3.layout.force()
 					            .size([width, height])
 								.nodes(dataset)
-								.gravity(.02)
-								.charge(-2);
+								.gravity(1.0)
+								.charge(-1);
 								//.on("tick", tick)
 								//.start();
 								
@@ -191,7 +191,7 @@
 										.attr('cx', function(d) { console.log(d.x); return d.x; })
 										.attr('cy', function(d) { console.log(d.y); return d.y; })
 										.attr('fill', 'red')
-										.attr('r', function(d) { console.log(d.y); return (d.wins/162) * 10; });
+										.attr('r', function(d) { console.log(d.y); return (d.wins/162) * 40; });
 										
 								}
 							);
