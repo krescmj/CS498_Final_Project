@@ -219,29 +219,24 @@
 					   .append("path")
 	                   .attr("d", function(d, i) { return "M" + d.join("L") + "Z"; })
 	                   .datum(function(d, i) { return d.point; })
-	//Give each cell a unique class where the unique part corresponds to the circle classes
-	//.attr("class", function(d,i) { return "voronoi " + d.CountryCode; })
-	//.style("stroke", "#2074A0") //I use this to look at how the cells are dispersed as a check
-	//.style("stroke-opacity", 0.5)
-	.style("fill", "none")
-	.style("pointer-events", "all")
-						   .on("mouseover", function(d) {
+					   //.style("stroke-opacity", 0.5)
+	                   .style("fill", "none")
+	                   .style("pointer-events", "all")
+					   .on("mouseover", function(d) {
 							tooltip.transition()
 								   .duration(200)
 							       .style("opacity", .9);
 				            tooltip.html( "<b> Team Name: </b>"+ d.team )
                                    .style("left", (d3.event.pageX + 5) + "px")
                                    .style("top", (d3.event.pageY - 28) + "px");
+								   
+						    console.log(d.payroll)
                           })
-						.on("mouseout", function(d) {
+					   .on("mouseout", function(d) {
                             tooltip.transition()
                                    .duration(500)
                                    .style("opacity", 0);
-                          });
-	//.on("mouseover", showTooltip)
-	//.on("mouseout",  removeTooltip);
-						  
-					
+                          })		
 				}	
 			);
 		</script>
