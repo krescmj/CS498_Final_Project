@@ -188,7 +188,7 @@
 					//	 .attr("x", height/2)
 					//	 .text("Number of Wins");
 					
-					console.log(dataset.wins);
+					//console.log(dataset.wins);
 								
 			        svg.selectAll('circle')
 					   .data(dataset)
@@ -196,7 +196,7 @@
 					   .append('circle')
 					   .attr('r', function(d) { return radius; })
 					   .attr('cx', function(d) { return x_scale(d.payroll); })
-					   .attr('cy', function(d) { return y_scale(d.wins); })
+					   .attr('cy', function(d) { console.log(d.wins), return y_scale(d.wins); })
 					   .attr('fill', 'blue');
 					   
 					//force.on('end', 
