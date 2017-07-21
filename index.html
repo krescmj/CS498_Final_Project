@@ -160,11 +160,11 @@
 														  
 							
 					
-					x_scale.domain([ d3.min(dataset, function (d) { return d.payroll; }) + radius, 
-							         d3.max(dataset, function (d) { return d.payroll; }) - radius])		
+					x_scale.domain([ d3.min(dataset, function (d) { return d.payroll; }), 
+							         d3.max(dataset, function (d) { return d.payroll; })]);	
 
-					y_scale.domain([ d3.min(dataset, function (d) { return d.wins; }) + radius, 
-								     d3.max(dataset, function (d) { return d.wins; }) - radius])
+					y_scale.domain([ d3.min(dataset, function (d) { return d.wins; }), 
+								     d3.max(dataset, function (d) { return d.wins; })]);
 					svg.append("g")
 					     .attr("class", "x axis")
 					     .attr("transform", "translate(0," + height + ")")
