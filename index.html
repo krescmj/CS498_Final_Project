@@ -169,14 +169,17 @@
 					
 					svg.append("g")
 						 .call(xAxis)
+						 .attr("class", "x axis")
 						 .append("text")
 						 .text("Test x");
 
 					 svg.append("g")
 						 .call(yAxis)
 						 .append("text")
+						 .attr("class", "y axis")
 						 .text("Test y")
-						 .attr("transform", "rotate(-90)");
+						 .attr("transform", "rotate(-90)")
+						 .text("Test y");
 					
 								
 			        svg.selectAll('circle')
