@@ -231,7 +231,7 @@
                                    .style("top", (d3.event.pageY - 28) + "px");
 							
 							svg.selectAll('circle')
-							   .data.filter( function(circle_d){return circle_d.team == d.team;} )
+							   .data(data.filter( function(circle_d){return circle_d.team == d.team;} ))
 							   .append('line')
 							   .attr('x1', (d3.event.pageX + 5))
 							   .attr('x2', x_scale(d.payroll))
