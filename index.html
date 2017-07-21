@@ -181,6 +181,7 @@
 
 					svg.append("g")
 						 .attr("class", "y axis")
+						 .attr("transform", "translate(0," + width + ")")
 						 .call(y_axis)
 						 .append("text")
 						 .attr("class", "label")
