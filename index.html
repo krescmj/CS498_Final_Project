@@ -129,9 +129,9 @@
 				height = parseInt(window.getComputedStyle(document.getElementById("data_viz")).height) - margin.top - margin.bottom,
 				width =  parseInt(window.getComputedStyle(document.getElementById("data_viz")).width)  - margin.left - margin.right;
 			
-		    var x_scale = d3.scale.linear().range([radius, width-radius]),
+		    var x_scale = d3.scale.linear().range([radius+2, width-radius-2]),
 				x_axis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(5),
-			    y_scale = d3.scale.linear().range([height-radius, radius]),
+			    y_scale = d3.scale.linear().range([height-radius-2, radius+2]),
 				y_axis = d3.svg.axis().scale(y_scale).orient("left");
 				
 			var svg = d3.select("#data_viz_svg")
@@ -188,7 +188,7 @@
 					   .attr('r', function(d) { return radius; })
 					   .attr('cx', function(d) { return x_scale(d.payroll); })
 					   .attr('cy', function(d) { console.log(d.wins); return y_scale(d.wins); })
-					   .style("fill", function(d) { return color(d.year); });
+					   .style("fill", function(d) { return color(d.team); });
 					   
 					//force.on('end', 
 					//			function()
