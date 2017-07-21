@@ -189,8 +189,8 @@
 								  .data(dataset)
 					              .enter()
 								  .append('circle')
-								  .attr('r', function(d) { return radius; });
-								  .attr('cx', function(d) { return x_scale(d.payroll); });
+								  .attr('r', function(d) { return radius; })
+								  .attr('cx', function(d) { return x_scale(d.payroll); })
 								  .attr('cy', function(d) { return y_scale(d.wins); });
 								  .attr('fill', 'blue');
 					   
