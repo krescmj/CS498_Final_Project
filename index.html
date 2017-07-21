@@ -158,7 +158,7 @@
 				    var r = d3.scale.linear()
 					            .domain([ d3.min(dataset, function (d) { return d.wins; }), 
 								          d3.max(dataset, function (d) { return d.wins; })])
-					            .range([5, 40]);
+					            .range([1, 10]);
 								
 				    var xAxis = d3.svg.axis().scale(x);
 					
@@ -196,7 +196,7 @@
 										.attr('cx', function(d) { console.log(x(d.payroll)); return x(d.payroll); })
 										.attr('cy', function(d) { console.log(d.y); return d.y; })
 										.attr('fill', 'red')
-										.attr('r', function(d) { console.log(d.y); return r(d.wins); });
+										.attr('r', function(d) { console.log(r(d.wins)); return r(d.wins); });
 										
 								}
 							);
