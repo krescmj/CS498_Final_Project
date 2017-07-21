@@ -139,15 +139,17 @@
 			            .attr("width", width + margin.left + margin.right)
 						.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-			//var tooltip = d3.select("body").append("div")
-			//			    .attr("class", "tooltip")
-			//			    .style("opacity", 0);
-				
-
-		// add the tooltip area to the webpage
 			var tooltip = d3.select("body").append("div")
 						    .attr("class", "tooltip")
 						    .style("opacity", 0);
+							
+			var voronoi = d3.geom.voronoi()
+	                        .x(function(d) { return x_scale(d.payroll); })
+	                        .y(function(d) { return y_scale(d.wins); })
+	                        .clipExtent([[0, 0], [width, height]]);
+
+			//var voronoiGroup = wrapper.append("g")
+			//						  .attr("class", "voronoiWrapper");
 		
 			d3.csv('./data/payroll.csv',
 				function(error, dataset)
@@ -195,7 +197,7 @@
 					   .append('circle')
 					   .attr('r', function(d) { return radius; })
 					   .attr('cx', function(d) { return x_scale(d.payroll); })
-					   .attr('cy', function(d) { console.log(d.wins); return y_scale(d.wins); })
+					   .attr('cy', function(d) { return y_scale(d.wins); })
 					   .style("fill", function(d) { return color(d.year); })
 					   .on("mouseover", function(d) {
 							tooltip.transition()
@@ -210,6 +212,23 @@
                                    .duration(500)
                                    .style("opacity", 0);
                           });
+						  
+					svg.selectAll("path")
+					   .data(voronoi(dataset)) //Use vononoi() with your dataset inside
+					   .enter()
+					   .append("path")
+	                   .attr("d", function(d, i) { return "M" + d.join("L") + "Z"; })
+	                   .datum(function(d, i) { return d.point; })
+	//Give each cell a unique class where the unique part corresponds to the circle classes
+	//.attr("class", function(d,i) { return "voronoi " + d.CountryCode; })
+	.style("stroke", "#2074A0") //I use this to look at how the cells are dispersed as a check
+	.style("stroke-opacity", 0.5)
+	.style("fill", "none")
+	.style("pointer-events", "all");
+	//.on("mouseover", showTooltip)
+	//.on("mouseout",  removeTooltip);
+						  
+					
 				}	
 			);
 		</script>
