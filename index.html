@@ -138,6 +138,17 @@
 			            .attr("height", height + margin.top + margin.bottom)
 			            .attr("width", width + margin.left + margin.right)
 						.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+			//var tooltip = d3.select("body").append("div")
+			//			    .attr("class", "tooltip")
+			//			    .style("opacity", 0);
+							
+			var tip = d3.tip()
+                        .attr('class', 'd3-tip')
+                        .offset([-10, 0])
+                        .html( function(d) {
+                                  return "<b>Team: </b>" + d.team;
+  })
 		
 			d3.csv('./data/payroll.csv',
 				function(error, dataset)
@@ -178,8 +189,6 @@
 					     .style("text-anchor", "middle")
 						 .attr("x", -height/2)
 						 .text("Number of Wins");
-					
-					//console.log(dataset.wins);
 								
 			        svg.selectAll('circle')
 					   .data(dataset)
@@ -188,22 +197,9 @@
 					   .attr('r', function(d) { return radius; })
 					   .attr('cx', function(d) { return x_scale(d.payroll); })
 					   .attr('cy', function(d) { console.log(d.wins); return y_scale(d.wins); })
-					   .style("fill", function(d) { return color(d.team); });
-					   
-					//force.on('end', 
-					//			function()
-					//			{
-					//				console.log("got here")
-					//				svg.call(xAxis);
-									//.attr('cx', function(d) { return x_scale(d.payroll); })
-					//				node.attr('cy', function(d) { return d.y; })
-					//					.attr('fill', 'red')
-					//					.attr('r', function(d) { console.log(r_scale(d.wins)); return r_scale(d.wins); });
-					//					
-								//}
-					//		);
-							
-					
+					   .style("fill", function(d) { return color(d.year); })
+					   .on('mouseover', tip.show)
+                       .on('mouseout', tip.hide);	
 				}	
 			);
 		</script>
