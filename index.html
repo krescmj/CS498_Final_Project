@@ -149,17 +149,21 @@
 					y_scale.domain([ d3.max(dataset, function (d) { return d.wins; }) - radius, 
 								     d3.min(dataset, function (d) { return d.wins; }) + radius])
 					svg.append("g")
+					     .attr("class", "x axis")
+					     .attr("transform", "translate(0," + height + ")")
 						 .call(xAxis)
-						 .attr("class", "x axis")
 						 .append("text")
+						 .attr("x", margin.left)
+						 .attr("y", -margin.top/3)
 						 .text("Test x");
 
 					 svg.append("g")
+						 .attr("class", "y axis")
+						 .attr("transform", "rotate(-90)")
 						 .call(yAxis)
 						 .append("text")
-						 .attr("class", "y axis")
-						 .text("Test y")
-						 .attr("transform", "rotate(-90)")
+						 .attr("x", margin.left/3)
+						 .attr("y", marging.top)
 						 .text("Test y");
 					
 								
