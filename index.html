@@ -123,22 +123,19 @@
   
   		<script>
 		
-			var margin = {top: 20, right: 20, bottom: 30, left: 40};
-		
-			var svg = d3.select("#data_viz_svg")
-			            .attr("height", parseInt(window.getComputedStyle(document.getElementById("data_viz")).height))
-			            .attr("width", parseInt(window.getComputedStyle(document.getElementById("data_viz")).width))
-						.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+			var margin = {top: 20, right: 20, bottom: 30, left: 40},
+				height = parseInt(window.getComputedStyle(document.getElementById("data_viz")).height) - margin.top - margin.bottom,
+				width =  parseInt(window.getComputedStyle(document.getElementById("data_viz")).width)  - margin.left - margin.right;
 			
-            var    width = svg.attr("width") - margin.left - margin.right;
-            var    height = svg.attr("height") - margin.top - margin.bottom;
-				
-
-				
 		    var x_scale = d3.scale.linear().range([0, width]),
 				x_axis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(5),
 			    y_scale = d3.scale.linear().range([height, 0]),
 				y_axis = d3.svg.axis().scale(y_scale).orient("left");
+				
+			var svg = d3.select("#data_viz_svg")
+			            .attr("height", height + margin.top + margin.bottom)
+			            .attr("width", width + margin.left + margin.right)
+						.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 		
 			d3.csv('./data/payroll.csv',
 				function(error, dataset)
@@ -167,6 +164,7 @@
 
 					y_scale.domain([ d3.min(dataset, function (d) { return d.wins; }), 
 								     d3.max(dataset, function (d) { return d.wins; })]);
+									 
 					svg.append("g")
 					     .attr("class", "x axis")
 					     .attr("transform", "translate(0," + height + ")")
