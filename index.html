@@ -148,13 +148,6 @@
 			var tooltip = d3.select("body").append("div")
 						    .attr("class", "tooltip")
 						    .style("opacity", 0);
-	
-			var tip = d3.tip()
-                        .attr('class', 'd3-tip')
-                        .offset([-10, 0])
-                        .html( function(d) {
-                                  return "<b>Team: </b>" + d.team;
-                             });
 		
 			d3.csv('./data/payroll.csv',
 				function(error, dataset)
@@ -208,7 +201,7 @@
 							tooltip.transition()
 								   .duration(200)
 							       .style("opacity", .9);
-				            tooltip.html( <b> "Team Name:" </b> + d.team )
+				            tooltip.html( "<b> Team Name: </b>"+ d.team )
                                    .style("left", (d3.event.pageX + 5) + "px")
                                    .style("top", (d3.event.pageY - 28) + "px");
                           })
