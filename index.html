@@ -124,8 +124,9 @@
   		<script>
 		
 			var svg = d3.select("#data_viz_svg");
-			svg.attr("height", parseInt(window.getComputedStyle(document.getElementById("data_viz")).height)-50);
-			svg.attr("width", parseInt(window.getComputedStyle(document.getElementById("data_viz")).width)-50);
+			svg.attr("height", parseInt(window.getComputedStyle(document.getElementById("data_viz")).height));
+			svg.attr("width", parseInt(window.getComputedStyle(document.getElementById("data_viz")).width));
+			svg.attr("height", 200)
 			
 			var margin = {top: 20, right: 20, bottom: 30, left: 40},
                 width = svg.attr("width") - margin.left - margin.right,
