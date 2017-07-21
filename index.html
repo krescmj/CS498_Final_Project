@@ -161,6 +161,11 @@
 								          d3.max(dataset, function (d) { return d.wins; })])
 					            .range([5, 30]);
 								
+					var g_scale = d3.scale.linear()
+					            .domain([ d3.min(dataset, function (d) { return d.wins; }), 
+								          d3.max(dataset, function (d) { return d.wins; })])
+					            .range([0.1, 3.0]);
+								
 				    //var chg_scale =
 								
 				    var xAxis = d3.svg.axis().scale(x_scale);
@@ -175,8 +180,8 @@
 					var force = d3.layout.force()
 					            .size([width, height])
 								.nodes(dataset)
-								//.gravity(1.0)
-								.charge( function(node) { return r_scale(node.wins) * -20 });
+								.gravity( function(node) { return g_scale(node.wins) });
+								//.charge( function(node) { return r_scale(node.wins) * -20 });
 								//.on("tick", tick)
 								//.start();
 								
