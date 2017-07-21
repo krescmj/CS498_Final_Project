@@ -153,7 +153,7 @@
 					var x = d3.scale.linear()
 					            .domain([ d3.min(dataset, function (d) { return d.payroll; }), 
 								          d3.max(dataset, function (d) { return d.payroll; })])
-					            .range([0, svg.attr("width", width)]);
+					            .range([0, svg.attr("width")]);
 								
 				    var xAxis = d3.svg.axis().scale(x);
 					
@@ -188,7 +188,7 @@
 									svg.call(xAxis);
 									
 									node.append('circle')
-										.attr('cx', function(d) { console.log(d.x); return x(d.payroll); })
+										.attr('cx', function(d) { console.log(x(d.payroll)); return x(d.payroll); })
 										.attr('cy', function(d) { console.log(d.y); return d.y; })
 										.attr('fill', 'red')
 										.attr('r', function(d) { console.log(d.y); return (d.wins/162) * 40; });
