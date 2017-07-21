@@ -23,6 +23,8 @@
 
     <!-- Custom styles for this template -->
     <link href="./css/sticky-footer-navbar.css" rel="stylesheet">
+	
+	<link href="./css/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -165,34 +167,29 @@
 								
 				    //var chg_scale =
 								
-				    var xAxis = d3.svg.axis().scale(x_scale);
+				    var xAxis = d3.svg.axis().scale(x_scale).orient("bottom");
+					var y_scale = d3.svg.axis().scale(x_scale).orient("left");
 					
-					//svg.data(dataset)
-					//   .enter()
-					//   .append("circle")
-					 //  .attr("r", 30);
-					   //.attr("cx", 50)
-					   //.attr("cy", 10);
+					svg.append("g")
+						 .call(xAxis)
+						 .append("text")
+						 .text("Test x");
+
+					 // y-axis
+					 svg.append("g")
+						 .call(yAxis)
+						 .append("text")
+						 .text("Test y");
 					
-					//var force = d3.layout.force()
-					 //           .size([width, height])
-								//.nodes(dataset)
-								//.gravity( function(node) { return g_scale(node.wins) });
-								//.charge( function(node) { return r_scale(node.wins) * -20 });
-								//.on("tick", tick)
-								//.start();
-					//			.gravity(0)
-					//		    .charge(0)
-                    //            .on("tick", tick);
 								
-			        var node = svg.selectAll('circle')
-								  .data(dataset)
-					              .enter()
-								  .append('circle')
-								  .attr('r', function(d) { return radius; })
-								  .attr('cx', function(d) { return x_scale(d.payroll); })
-								  .attr('cy', function(d) { return y_scale(d.wins); })
-								  .attr('fill', 'blue');
+			        svg.selectAll('circle')
+					   .data(dataset)
+					   .enter()
+					   .append('circle')
+					   .attr('r', function(d) { return radius; })
+					   .attr('cx', function(d) { return x_scale(d.payroll); })
+					   .attr('cy', function(d) { return y_scale(d.wins); })
+					   .attr('fill', 'blue');
 					   
 					//force.on('end', 
 					//			function()
