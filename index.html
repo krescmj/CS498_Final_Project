@@ -138,7 +138,7 @@
 					var radius = 10;
 					
 					var x_scale = d3.scale.linear().range([0, width]);
-					var y_scale = d3.scale.linear().range([0, height]);										  
+					var y_scale = d3.scale.linear().range([height, 0]);										  
 								
 				    var xAxis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(5);
 					var yAxis = d3.svg.axis().scale(y_scale).orient("left").ticks(10);
@@ -152,9 +152,9 @@
 					     .attr("class", "x axis")
 					     .attr("transform", "translate(0," + height + ")")
 						 .call(xAxis)
-						 .append("text")
+						 //.append("text")
 						 //.attr("x", margin.left)
-						 .attr("y", height)
+						 //.attr("y", height)
 						 //.text("Test x");
 
 					 //svg.append("g")
