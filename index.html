@@ -26,22 +26,22 @@
 	
 	<style>
 
-body {
-  font: 10px sans-serif;
-}
+	body {
+	  font: 10px sans-serif;
+	}
 
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
 
-.dot {
-  stroke: #000;
-}
+	.dot {
+	  stroke: #000;
+	}
 
-</style>
+	</style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -167,12 +167,12 @@ body {
 								     d3.min(dataset, function (d) { return d.wins; }) + radius])
 					svg.append("g")
 					     .attr("class", "x axis")
-					     .attr("transform", "translate(0," + height + ")")
+					     .attr("transform", "translate(0," + svg.attr("height") + ")")
 						 .call(xAxis)
 						 .append("text")
 						 .style("text-anchor", "middle")
-						 //.attr("x", margin.left)
-						 .attr("y", 6)
+						 .attr("x", width/2)
+						 .attr("y", 12)
 						 .text("Payroll (dollars)");
 
 					 //svg.append("g")
