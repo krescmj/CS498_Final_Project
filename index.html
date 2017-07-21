@@ -167,12 +167,12 @@
 								     d3.min(dataset, function (d) { return d.wins; }) + radius])
 					svg.append("g")
 					     .attr("class", "x axis")
-					     .attr("transform", "translate(0," + svg.attr("height") - margin.bottom + ")")
+					     .attr("transform", "translate(0," + (svg.attr("height") - margin.bottom) + ")")
 						 .call(xAxis)
 						 .append("text")
 						 .style("text-anchor", "middle")
 						 .attr("x", width/2)
-						 .attr("y", 12)
+						 .attr("y", 40)
 						 .text("Payroll (dollars)");
 
 					 //svg.append("g")
