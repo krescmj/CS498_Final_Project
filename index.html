@@ -150,21 +150,18 @@
 					
 					//console.log(payrolls);
 					//var x = d3.scale.linear().domain([d3.min(payrolls), d3.max(payrolls)]).range([0, svg.attr("width") ]);
+					var radius = 10;
 					
 					var x_scale = d3.scale.linear()
 					            .domain([ d3.min(dataset, function (d) { return d.payroll; }), 
 								          d3.max(dataset, function (d) { return d.payroll; })])
-					            .range([0, svg.attr("width")]);
+					            .range([radius, svg.attr("width") - radius]);
 								
-				    var r_scale = d3.scale.linear()
+				    var y_scale = d3.scale.linear()
 					            .domain([ d3.min(dataset, function (d) { return d.wins; }), 
 								          d3.max(dataset, function (d) { return d.wins; })])
-					            .range([5, 30]);
+					            .range([radius, svg.attr("height") - radius]);
 								
-					var g_scale = d3.scale.linear()
-					            .domain([ d3.min(dataset, function (d) { return d.wins; }), 
-								          d3.max(dataset, function (d) { return d.wins; })])
-					            .range([0.1, 3.0]);
 								
 				    //var chg_scale =
 								
@@ -177,37 +174,39 @@
 					   //.attr("cx", 50)
 					   //.attr("cy", 10);
 					
-					var force = d3.layout.force()
-					            .size([width, height])
-								.nodes(dataset)
-								.gravity( function(node) { return g_scale(node.wins) });
+					//var force = d3.layout.force()
+					 //           .size([width, height])
+								//.nodes(dataset)
+								//.gravity( function(node) { return g_scale(node.wins) });
 								//.charge( function(node) { return r_scale(node.wins) * -20 });
 								//.on("tick", tick)
 								//.start();
+					//			.gravity(0)
+					//		    .charge(0)
+                    //            .on("tick", tick);
 								
 			        var node = svg.selectAll('circle')
 								  .data(dataset)
 					              .enter()
 								  .append('circle')
-								  //.attr('r', 20);
+								  .attr('r', function(d) { return radius; });
 								  .attr('cx', function(d) { return x_scale(d.payroll); });
-								  //.attr('cy', 20)
-								  //.attr('fill', 'blue');
+								  .attr('cy', function(d) { return y_scale(d.wins); });
+								  .attr('fill', 'blue');
 					   
-					force.on('end', 
-								function()
-								{
-									console.log("got here")
-									svg.call(xAxis);
+					//force.on('end', 
+					//			function()
+					//			{
+					//				console.log("got here")
+					//				svg.call(xAxis);
 									//.attr('cx', function(d) { return x_scale(d.payroll); })
-									node.attr('cy', function(d) { return d.y; })
-										.attr('fill', 'red')
-										.attr('r', function(d) { console.log(r_scale(d.wins)); return r_scale(d.wins); });
-										
+					//				node.attr('cy', function(d) { return d.y; })
+					//					.attr('fill', 'red')
+					//					.attr('r', function(d) { console.log(r_scale(d.wins)); return r_scale(d.wins); });
+					//					
 								}
-							);
+					//		);
 							
-				    force.start();
 					
 				}	
 			);
