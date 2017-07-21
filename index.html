@@ -159,7 +159,7 @@
 				    var r_scale = d3.scale.linear()
 					            .domain([ d3.min(dataset, function (d) { return d.wins; }), 
 								          d3.max(dataset, function (d) { return d.wins; })])
-					            .range([5, 40]);
+					            .range([5, 30]);
 								
 				    //var chg_scale =
 								
@@ -176,7 +176,7 @@
 					            .size([width, height])
 								.nodes(dataset)
 								//.gravity(1.0)
-								.charge( function(node) { return r_scale(node.wins) * -10 });
+								.charge( function(node) { return r_scale(node.wins) * -20 });
 								//.on("tick", tick)
 								//.start();
 								
