@@ -168,7 +168,7 @@
 					svg.append("g")
 					     .attr("class", "x axis")
 					     .attr("transform", "translate(0," + height + ")")
-						 .call(xAxis)
+						 .call(x_axis)
 						 .append("text")
 						 .attr("class", "label")
 						 .style("text-anchor", "middle")
@@ -178,7 +178,7 @@
 
 					svg.append("g")
 						 .attr("class", "y axis")
-						 .call(yAxis)
+						 .call(y_axis)
 						 .append("text")
 						 .attr("class", "label")
 						 .attr("transform", "rotate(-90)")
