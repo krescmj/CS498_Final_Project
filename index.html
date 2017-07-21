@@ -158,8 +158,8 @@
 					            .range([radius, svg.attr("width") - radius]);
 								
 				    var y_scale = d3.scale.linear()
-					            .domain([ d3.min(dataset, function (d) { return d.wins; }), 
-								          d3.max(dataset, function (d) { return d.wins; })])
+					            .domain([ d3.max(dataset, function (d) { return d.wins; }), 
+								          d3.min(dataset, function (d) { return d.wins; })])
 					            .range([radius, svg.attr("height") - radius]);
 								
 								
