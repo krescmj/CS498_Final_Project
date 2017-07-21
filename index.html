@@ -161,6 +161,8 @@
 								          d3.max(dataset, function (d) { return d.wins; })])
 					            .range([5, 40]);
 								
+				    //var chg_scale =
+								
 				    var xAxis = d3.svg.axis().scale(x_scale);
 					
 					//svg.data(dataset)
@@ -174,7 +176,7 @@
 					            .size([width, height])
 								.nodes(dataset)
 								//.gravity(1.0)
-								.charge(-10);
+								.charge( function(node) { return r_scale(d.wins) * -10 });
 								//.on("tick", tick)
 								//.start();
 								
