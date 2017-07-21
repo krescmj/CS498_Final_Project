@@ -128,11 +128,13 @@
 			//var height = parseInt(window.getComputedStyle(document.getElementById("data_viz")).height);
 			
 			svg.attr("height", parseInt(window.getComputedStyle(document.getElementById("data_viz")).height));
-			svg.attr("width", parseInt(window.getComputedStyle(document.getElementById("data_viz")).width));
+			   .attr("width", parseInt(window.getComputedStyle(document.getElementById("data_viz")).width));
 			
 			var margin = {top: 20, right: 20, bottom: 30, left: 40},
                 width = svg.attr("width") - margin.left - margin.right,
                 height = svg.attr("height") - margin.top - margin.bottom;
+				
+			svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 		
 			d3.csv('./data/payroll.csv',
 				function(error, dataset)
@@ -167,7 +169,7 @@
 								     d3.min(dataset, function (d) { return d.wins; }) + radius])
 					svg.append("g")
 					     .attr("class", "x axis")
-					     .attr("transform", "translate(0," + (svg.attr("height") - margin.bottom) + ")")
+					     .attr("transform", "translate(0," + height + ")")
 						 .call(xAxis)
 						 .append("text")
 						 .style("text-anchor", "middle")
