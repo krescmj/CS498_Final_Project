@@ -151,14 +151,14 @@
 					//var x = d3.scale.linear().domain([d3.min(payrolls), d3.max(payrolls)]).range([0, svg.attr("width") ]);
 					
 					var x = d3.scale.linear()
-					            .domain([ d3.min(dataset, function (d) { return d.payroll; }), 
+					            .range([ d3.min(dataset, function (d) { return d.payroll; }), 
 								          d3.max(dataset, function (d) { return d.payroll; })])
-					            .range([0, svg.attr("width")]);
+					            .domain([0, svg.attr("width")]);
 								
 				    var r = d3.scale.linear()
-					            .domain([ d3.min(dataset, function (d) { return d.wins; }), 
+					            .range([ d3.min(dataset, function (d) { return d.wins; }), 
 								          d3.max(dataset, function (d) { return d.wins; })])
-					            .range([1, 10]);
+					            .domain([1, 10]);
 								
 				    var xAxis = d3.svg.axis().scale(x);
 					
