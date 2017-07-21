@@ -176,7 +176,7 @@
 					            .size([width, height])
 								.nodes(dataset)
 								//.gravity(1.0)
-								.charge( function(node) { return r_scale(d.wins) * -10 });
+								.charge( function(node) { return r_scale(node.wins) * -10 });
 								//.on("tick", tick)
 								//.start();
 								
