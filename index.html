@@ -123,6 +123,7 @@
   
   		<script>
 			var radius = 6;
+			var color = d3.scale.category10();
 		
 			var margin = {top: 20, right: 20, bottom: 60, left: 40},
 				height = parseInt(window.getComputedStyle(document.getElementById("data_viz")).height) - margin.top - margin.bottom,
@@ -149,12 +150,6 @@
 						d.year = +d.year;
 						d.wins = +d.wins;
 					});
-					
-					//console.log(payrolls);
-					//var x = d3.scale.linear().domain([d3.min(payrolls), d3.max(payrolls)]).range([0, svg.attr("width") ]);
-					var radius = 10;
-														  
-							
 					
 					x_scale.domain([ d3.min(dataset, function (d) { return d.payroll; }), 
 							         d3.max(dataset, function (d) { return d.payroll; })]);	
@@ -193,7 +188,7 @@
 					   .attr('r', function(d) { return radius; })
 					   .attr('cx', function(d) { return x_scale(d.payroll); })
 					   .attr('cy', function(d) { console.log(d.wins); return y_scale(d.wins); })
-					   .attr('fill', 'blue');
+					   .style("fill", function(d) { return color(d.year); });
 					   
 					//force.on('end', 
 					//			function()
