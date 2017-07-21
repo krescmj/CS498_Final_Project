@@ -131,12 +131,14 @@
                 width = svg.attr("width") - margin.left - margin.right,
                 height = svg.attr("height") - margin.top - margin.bottom;
 				
+			svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+				
 		    var x_scale = d3.scale.linear().range([0, width]),
 				x_axis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(5),
 			    y_scale = d3.scale.linear().range([height, 0]),
 				y_axis = d3.svg.axis().scale(y_scale).orient("left");
 				
-			svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+			//svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 		
 			d3.csv('./data/payroll.csv',
 				function(error, dataset)
