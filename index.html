@@ -174,17 +174,18 @@
 						 .append("text")
 						 .style("text-anchor", "middle")
 						 .attr("x", width/2)
-						 .attr("y", 40)
+						 .attr("y", 25)
 						 .text("Payroll (dollars)");
 
-					 //svg.append("g")
-					//	 .attr("class", "y axis")
-					//	 .attr("transform", "rotate(-90)")
-					//	 .call(yAxis)
-					//	 .append("text")
+					svg.append("g")
+						 .attr("class", "y axis")
+						 .call(yAxis)
+						 .attr("transform", "rotate(-90)")
+						 .append("text")
 					//	 .attr("x", margin.left/3)
 					//	 .attr("y", margin.top)
-					//	 .text("Test y");
+					     .style("text-anchor", "middle")
+						 .text("Test y");
 					
 								
 			        svg.selectAll('circle')
