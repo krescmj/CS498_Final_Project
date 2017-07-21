@@ -150,17 +150,17 @@
 					//console.log(payrolls);
 					//var x = d3.scale.linear().domain([d3.min(payrolls), d3.max(payrolls)]).range([0, svg.attr("width") ]);
 					
-					var x = d3.scale.linear()
+					var x_scale = d3.scale.linear()
 					            .domain([ d3.min(dataset, function (d) { return d.payroll; }), 
 								          d3.max(dataset, function (d) { return d.payroll; })])
 					            .range([0, svg.attr("width")]);
 								
-				    var r = d3.scale.linear()
+				    var r_scale = d3.scale.linear()
 					            .domain([ d3.min(dataset, function (d) { return d.wins; }), 
 								          d3.max(dataset, function (d) { return d.wins; })])
 					            .range([1, 10]);
 								
-				    var xAxis = d3.svg.axis().scale(x);
+				    var xAxis = d3.svg.axis().scale(x_scale);
 					
 					//svg.data(dataset)
 					//   .enter()
@@ -193,10 +193,10 @@
 									svg.call(xAxis);
 									
 									node.append('circle')
-										.attr('cx', function(d) { console.log(x(d.payroll)); return x(d.payroll); })
+										.attr('cx', function(d) { console.log(x_scale(d.payroll)); return x_scale(d.payroll); })
 										.attr('cy', function(d) { return d.y; })
 										.attr('fill', 'red')
-										.attr('r', function(d) { console.log(r(d.wins)); return r(d.wins); });
+										.attr('r', function(d) { console.log(r_scale(d.wins)); return r_scale(d.wins); });
 										
 								}
 							);
