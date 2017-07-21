@@ -192,10 +192,8 @@
 								{
 									console.log("got here")
 									svg.call(xAxis);
-									
-									node.append('circle')
-										//.attr('cx', function(d) { return x_scale(d.payroll); })
-										.attr('cy', function(d) { return d.y; })
+									//.attr('cx', function(d) { return x_scale(d.payroll); })
+									node.attr('cy', function(d) { return d.y; })
 										.attr('fill', 'red')
 										.attr('r', function(d) { console.log(r_scale(d.wins)); return r_scale(d.wins); });
 										
