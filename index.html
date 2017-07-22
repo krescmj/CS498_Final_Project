@@ -128,9 +128,6 @@
   
   		<script>
 			var radius = 6;
-			//var color = d3.scale.category10();
-			
-			//var color = d3.scale.linear().domain([-1, 0, 1]).range(["red", "white", "green"]);
 		
 			var margin = {top: 20, right: 20, bottom: 60, left: 40},
 				height = parseInt(window.getComputedStyle(document.getElementById("data_viz")).height) - margin.top - margin.bottom,
@@ -178,7 +175,6 @@
 					color_range = d3.scale.ordinal().domain([1, 2, 3, 4, 5])
 									                .rangePoints([d3.min(dataset, function (d) { return d.payroll; }),
 									                              d3.max(dataset, function (d) { return d.payroll; })]);
-					console.log(color_range.range())v
 					color = d3.scale.linear()
 					                .domain(color_range.range())
 									.range(["#9467bd", 
