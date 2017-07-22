@@ -232,6 +232,7 @@
 							
 							svg.selectAll('circle')
 							   .data(dataset.filter( function(circle_d){return circle_d.team == d.team;} ))
+							   .enter()
 							   .append('line')
 							   .attr('x1', (d3.event.pageX + 5))
 							   .attr('x2', x_scale(d.payroll))
