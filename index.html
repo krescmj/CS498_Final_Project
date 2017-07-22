@@ -255,6 +255,7 @@
 							   .attr('x2', function(d) { return x_scale(d.payroll); })
 							   .attr('y1', (d3.event.pageY - 28) + "px")
 							   .attr('y2', function(d) { return y_scale(d.wins); })
+							   .attr('id', 'tooltip_line')
 							   .attr('stroke', 'gray')
 							   .attr('stroke-width', "1")
 							   .style("opacity", 0.9);
@@ -267,8 +268,7 @@
                                    .duration(500)
                                    .style("opacity", 0);
 								   
-						    svg.selectAll('line')
-							   .data(dataset)
+						    svg.selectAll('#tooltip_line')
 							   .transition()
                                .duration(500)
                                .remove();
