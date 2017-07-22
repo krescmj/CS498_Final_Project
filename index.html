@@ -171,7 +171,7 @@
 					var step = d3.max(dataset, function (d) { return d.wins; }) / 4
 					
 					color_range = d3.scale.ordinal().domain([1, 2, 3, 4])
-									                .rangePoints([d3.min(dataset, function (d) { return d.payroll; },
+									                .rangePoints([d3.min(dataset, function (d) { return d.payroll; }),
 									                              d3.max(dataset, function (d) { return d.payroll; })]);
 					
 					color = d3.scale.linear()
