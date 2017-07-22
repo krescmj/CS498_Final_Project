@@ -197,6 +197,7 @@
 									        "#e377c2"]);									 
 					svg.append("g")
 					     .attr("class", "x axis")
+						 .style("font", "14px times")
 					     .attr("transform", "translate(0," + height + ")")
 						 .call(x_axis)
 						 .append("text")
@@ -208,6 +209,7 @@
 
 					svg.append("g")
 						 .attr("class", "y axis")
+						 .style("font", "14px times")
 						 .call(y_axis)
 						 .append("text")
 						 .attr("class", "label")
@@ -235,11 +237,11 @@
 					   .style("stroke-opacity", 0.5)
 	                   .style("fill", "none")
 	                   .style("pointer-events", "all")
-					   .on("mouseover", function(d) {
+					   .on("mouseover", function(d) {			   
 							tooltip.transition()
 								   .duration(200)
 							       .style("opacity", .9);
-				            tooltip.html( "<b> Team Name: </b>"+ d.team )
+				            tooltip.html( "<b> <center> Team Name: </b>"+ d.team + "</center>" )
                                    .style("left", (d3.event.pageX + 5) + "px")
                                    .style("top", (d3.event.pageY - 28) + "px");
 							
