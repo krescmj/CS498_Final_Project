@@ -231,7 +231,7 @@
                                    .style("top", (d3.event.pageY - 28) + "px");
 							
 							svg.selectAll('line')
-							   .data(dataset.filter( function(line_d){ return line_d.team == d.team;} ))
+							   .data(dataset.filter( function(line_d){ return line_d.team.equals(d.team);} ))
 							   .enter()
 							   .append('line')
 							   .attr('x1', (d3.event.pageX + 5))
