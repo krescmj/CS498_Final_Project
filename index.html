@@ -268,16 +268,14 @@
 							var coords = d3.mouse(this);
 							svg.selectAll("#tooltip_line")
 							   .attr('x1', (coords[0] + 5) + "px")
-							   .attr('x2', function(d) { return x_scale(d.payroll); })
 							   .attr('y1', (coords[1] - 28) + "px")
-							   .attr('y2', function(d) { return y_scale(d.wins); })
 					   })
 					   .on("mouseout", function(d) {
                             tooltip.transition()
                                    .duration(500)
                                    .style("opacity", 0);
 								   
-						    svg.selectAll("#tooltip_line").data().exit()
+						    svg.selectAll("#tooltip_line")
 							//   .transition()
                             //   .duration(500)
                                .remove();
