@@ -231,9 +231,10 @@
                                    .style("top", (d3.event.pageY - 28) + "px");
 							
 							svg.selectAll('line')
-							   .data(dataset.filter( function(line_d){ return line_d.team.valueOf() == d.team.valueOf();} ))
+							   .data()
 							   .enter()
 							   .append('line')
+							   .filter(function(line_d){ return line_d.team.valueOf() == d.team.valueOf();})
 							   .attr('x1', (d3.event.pageX + 5))
 							   .attr('x2', function(d) { return x_scale(d.payroll); })
 							   .attr('y1', (d3.event.pageY - 28))
