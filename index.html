@@ -231,7 +231,7 @@
                                    .style("top", (d3.event.pageY - 28) + "px");
 							
 							svg.selectAll('line')
-							   .data()
+							   .data(dataset)
 							   .enter()
 							   .append('line')
 							   .filter(function(line_d){ return line_d.team.valueOf() == d.team.valueOf();})
