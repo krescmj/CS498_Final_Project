@@ -267,6 +267,12 @@
 							
 							
                           })
+					   .on("mousemove", function(d) {
+							var coords = d3.mouse(this);
+							svg.selectAll("#tooltip_line")
+							   .attr('x1', (coords[0] + 5) + "px")
+							   .attr('y1', (coords[1] - 28) + "px")
+					   }
 					   .on("mouseout", function(d) {
                             tooltip.transition()
                                    .duration(500)
