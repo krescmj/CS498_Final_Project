@@ -230,6 +230,9 @@
                                    .style("left", (d3.event.pageX + 5) + "px")
                                    .style("top", (d3.event.pageY - 28) + "px");
 							
+							console.log(d3.event.pageX)
+							console.log(d3.event.pageY)
+							
 							svg.selectAll('line')
 							   .data(dataset)
 							   .enter()
