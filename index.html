@@ -239,8 +239,8 @@
 							   .attr('x2', function(d) { return x_scale(d.payroll); })
 							   .attr('y1', (d3.event.pageY - 28))
 							   .attr('y2', function(d) { return y_scale(d.wins); })
-							   .attr('stroke', 'black')
-							   .attr('stroke-width', "2")
+							   .attr('stroke', 'gray')
+							   .attr('stroke-width', "1")
 							   .style("opacity", 0.9);
 	
 							
@@ -253,7 +253,7 @@
 								   
 						    svg.selectAll('line').transition()
                                    .duration(500)
-                                   .style("opacity", 0);
+                                   .remove()
                           })		
 				}	
 			);
