@@ -37,7 +37,10 @@
 	  shape-rendering: crispEdges;
 	}
 	
-	.y.axis line,
+	.y.axis line {
+  stroke: #fff;
+}
+
 .y.axis path {
   fill: none;
   stroke: #000;
@@ -99,7 +102,6 @@
 	  
 	  <div>
 		<svg id="data_viz_svg">
-		<line x1="100" y1="100" x2="200" y2="200> </line>
 		</svg>
 	  
 	      my test
@@ -249,8 +251,8 @@
 							svg.selectAll('line')
 							   .data(dataset)
 							   .enter()
-							   .filter(function(line_d){ return line_d.team.valueOf() == d.team.valueOf();})
 							   .append('line')
+							   .filter(function(line_d){ return line_d.team.valueOf() == d.team.valueOf();})
 							   .attr('x1', (d3.event.pageX + 5) + "px")
 							   .attr('x2', function(d) { return x_scale(d.payroll); })
 							   .attr('y1', (d3.event.pageY - 28) + "px")
