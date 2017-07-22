@@ -272,7 +272,7 @@
                                    .duration(500)
                                    .style("opacity", 0);
 								   
-						    svg.selectAll("#tooltip_line")
+						    svg.selectAll("#tooltip_line").data(dataset).update()
 							//   .transition()
                             //   .duration(500)
                                .remove();
