@@ -123,7 +123,9 @@
   
   		<script>
 			var radius = 6;
-			var color = d3.scale.category10();
+			//var color = d3.scale.category10();
+			
+			//var color = d3.scale.linear().domain([-1, 0, 1]).range(["red", "white", "green"]);
 		
 			var margin = {top: 20, right: 20, bottom: 60, left: 40},
 				height = parseInt(window.getComputedStyle(document.getElementById("data_viz")).height) - margin.top - margin.bottom,
@@ -147,9 +149,6 @@
 	                        .x(function(d) { return x_scale(d.payroll); })
 	                        .y(function(d) { return y_scale(d.wins); })
 	                        .clipExtent([[0, 0], [width, height]]);
-
-			//var voronoiGroup = wrapper.append("g")
-			//						  .attr("class", "voronoiWrapper");
 		
 			d3.csv('./data/payroll.csv',
 				function(error, dataset)
@@ -168,7 +167,20 @@
 
 					y_scale.domain([ d3.min(dataset, function (d) { return d.wins; }), 
 								     d3.max(dataset, function (d) { return d.wins; })]);
-									 
+					
+					var step = d3.max(dataset, function (d) { return d.wins; }) / 4
+					
+					color_range = d3.scale.ordinal().domain([1, 2, 3, 4])
+									                .rangePoints([d3.min(dataset, function (d) { return d.payroll; },
+									                              d3.max(dataset, function (d) { return d.payroll; })]);
+					
+					color = d3.scale.linear()
+					                .domain(color_range.range())
+									.range(["#9467bd", 
+									        " #c5b0d5", 
+									        "#8c564b",
+									        "#c49c94", 
+									        "#e377c2"]);									 
 					svg.append("g")
 					     .attr("class", "x axis")
 					     .attr("transform", "translate(0," + height + ")")
@@ -198,7 +210,7 @@
 					   .attr('r', function(d) { return radius; })
 					   .attr('cx', function(d) { return x_scale(d.payroll); })
 					   .attr('cy', function(d) { return y_scale(d.wins); })
-					   .style("fill", function(d) { return color(d.year); });
+					   .style("fill", function(d) { return color(d.payroll); });
 					  // .on("mouseover", function(d) {
 					//		tooltip.transition()
 					//			   .duration(200)
