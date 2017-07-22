@@ -250,7 +250,7 @@
 							
 							console.log(coords)
 											
-							svg.selectAll('line')
+							svg.selectAll("#tooltip_line")
 							   .data(dataset)
 							   .enter()
 							   .append('line')
@@ -280,10 +280,10 @@
                                    .duration(500)
                                    .style("opacity", 0);
 								   
-						    //svg.selectAll("#tooltip_line")
+						    svg.selectAll("#tooltip_line")
 							//   .transition()
                             //   .duration(500)
-                            //   .remove();
+                               .remove();
                           })		
 				}	
 			);
