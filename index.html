@@ -229,8 +229,7 @@
 					   .attr('team_name', function(d) { return d.team; })
 					   .style("fill", function(d) { return color(d.year); });
 					   
-					var legend = legend_svg.selectAll('rect')
-							    .append("g")
+					var legend = legend_svg.append("g")
     .selectAll("g")
     .data(color.domain())
     .enter()
