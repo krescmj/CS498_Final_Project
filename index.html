@@ -142,7 +142,7 @@
 			var legend_svg = d3.select("#legend_svg")
 			                   .attr("width", width + margin.left + margin.right)
 							   .attr("height", 20)
-							   .append("g").attr("transform", "translate(" + margin.left + ",0));
+							   .append("g").attr("transform", "translate(" + margin.left + ",0)");
 
 			var tooltip = d3.select("body").append("div")
 						    .attr("class", "tooltip")
@@ -176,23 +176,6 @@
 
 					y_scale.domain([ d3.min(dataset, function (d) { return d.wins; }), 
 								     d3.max(dataset, function (d) { return d.wins; })]);
-					
-					var step = d3.max(dataset, function (d) { return d.wins; }) / 4
-					
-					//color_range = d3.scale.ordinal().domain([1, 2, 3, 4, 5])
-									             //   .rangePoints([d3.min(dataset, function (d) { return d.payroll; }),
-									              //                d3.max(dataset, function (d) { return d.payroll; })]);
-					//color = d3.scale.linear()
-					 //               .domain(color_range.range())
-					//				.range(["#9467bd", 
-					//				        "#c5b0d5", 
-					//				        "#8c564b",
-					//				        "#c49c94", 
-					//				        "#e377c2"]);
-					
-					
-
-					//var color = d3.scale.category10();
 					
 					svg.append("g")
 					     .attr("class", "x axis")
