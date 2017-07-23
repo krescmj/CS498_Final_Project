@@ -141,7 +141,7 @@
 						
 			var legend_svg = d3.select("#legend_svg")
 			                   .attr("width", width + margin.left + margin.right)
-							   .attr("height", 50)
+							   .attr("height", 20)
 							   .append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 			var tooltip = d3.select("body").append("div")
@@ -235,12 +235,11 @@
 										   .enter()
 										   .append('g')
 										   .attr('class', 'legend')
-											.attr('transform', function(d, i) {
-        //dsfr height = legend_height;
-        var x = i * legend_width * 2 + 7;
-        //var y = i * legend_height;
-			return 'translate(' + x + ', 0)';
-    });  
+										   .attr('transform', function(d, i)
+															  {
+																 var x = i * legend_width * 2 + 7;
+																 return 'translate(' + x + ', 0)';
+															  });  
 	
 	legend.append('rect')
     .attr('width', legend_width)
@@ -253,7 +252,6 @@ legend.append('text')
     .attr('y', legend_height - legend_spacing)
     .text(function(d) { return d; });
 					   
-					console.log(color.domain())
 						  
 					svg.selectAll("path")
 					   .data(voronoi(dataset)) //Use vononoi() with your dataset inside
