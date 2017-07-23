@@ -290,12 +290,13 @@ legend.append('text')
                                      if( circle_d.team.valueOf() == d.team.valueOf() ) 
 									 {
 										//console.log( d3.select(this).attr("cx") );
-											d3.select(this).attr("r", radius*3);
+											d3.select(this).attr("r", radius*2);
 											d3.select(this).attr("opacity").remove();
 									 }
 									 else
 									 {
 										d3.select(this).attr("opacity", 0.2);
+										d3.select(this).attr("r", radius);
 									 }
 								 });
 						})		 
@@ -310,19 +311,19 @@ legend.append('text')
 							   .attr('x1', (coords[0] + 5) + "px")
 							   .attr('y1', (coords[1] - 28) + "px")
 							   
-							d3.selectAll("#viz_circle")
-							     .each( function(circle_d, i) {
-                                     if( circle_d.team.valueOf() == d.team.valueOf() ) 
-									 {
+						//	d3.selectAll("#viz_circle")
+						//	     .each( function(circle_d, i) {
+                        //             if( circle_d.team.valueOf() == d.team.valueOf() ) 
+						//			 {
 										//console.log( d3.select(this).attr("cx") );
-											d3.select(this).attr("r", radius*2);
-											d3.select(this).attr("opacity").remove();
-									 }
-									 else
-									 {
-										d3.select(this).attr("opacity", 0.2);
-									 }
-								 });
+						//					d3.select(this).attr("r", radius*2);
+						//					d3.select(this).attr("opacity").remove();
+						//			 }
+						//			 else
+						//			 {
+						//				d3.select(this).attr("opacity", 0.2);
+						////			 }
+						//		 });
 					   })
 					   .on("mouseout", function(d) {
 					   
