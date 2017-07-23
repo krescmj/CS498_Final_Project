@@ -92,6 +92,11 @@
       </div>
 	  
 	  <div>
+		<svg id="legend_svg">
+		</svg>
+	  </div>
+	  
+	  <div>
 		<svg id="data_viz_svg">
 		</svg>
 	  </div>
@@ -133,6 +138,11 @@
 			            .attr("height", height + margin.top + margin.bottom)
 			            .attr("width", width + margin.left + margin.right)
 						.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+						
+			var legend_svg = d3.select("#legend_svg")
+			                   .attr("width", width + margin.left + margin.right)
+							   .attr("height", height + margin.top + margin.bottom)
+							   .append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 			var tooltip = d3.select("body").append("div")
 						    .attr("class", "tooltip")
@@ -219,7 +229,7 @@
 					   .attr('team_name', function(d) { return d.team; })
 					   .style("fill", function(d) { return color(d.year); });
 					   
-					var legend = d3.select('svg')
+					var legend = legend_svg.selectAll('rect')
 							    .append("g")
     .selectAll("g")
     .data(color.domain())
