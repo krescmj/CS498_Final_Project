@@ -145,8 +145,8 @@
 							
 			var color = d3.scale.category10();
 			
-			var legend_width = 15;
-			var legend_height = 5;
+			var legend_width = 30;
+			var legend_height = 15;
 			var legend_spacing = 2;
 		
 			d3.csv('./data/payroll.csv',
@@ -225,9 +225,9 @@
     .append('g')
       .attr('class', 'legend')
       .attr('transform', function(d, i) {
-        var height = legend_height;
-        var x = 0;
-        var y = i * height;
+        //dsfr height = legend_height;
+        var x = width - legend_width
+        var y = i * legend_height;
         return 'translate(' + x + ',' + y + ')';
     });  
 	
