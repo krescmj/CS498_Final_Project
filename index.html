@@ -292,6 +292,10 @@ legend.append('text')
 										//console.log( d3.select(this).attr("cx") );
 											d3.select(this).attr("r", radius*3);
 									 }
+									 else
+									 {
+										d3.select(this).attr("opacity", 0.2);
+									 }
 								 });
 						})		 
 					   .on("mousemove", function(d) {
