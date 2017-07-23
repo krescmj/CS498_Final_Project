@@ -189,7 +189,7 @@
 						 .text("Payroll (dollars)");
 
 					svg.append("g")
-						 .attr("class", "y axis")
+					     .attr("class", "y axis")
 						 .style("font", "14px times")
 						 .call(y_axis)
 						 .append("text")
@@ -208,6 +208,31 @@
 					   .attr('cx', function(d) { return x_scale(d.payroll); })
 					   .attr('cy', function(d) { return y_scale(d.wins); })
 					   .style("fill", function(d) { return color(d.year); });
+					   
+					var legend = d3.select('svg')
+							    .append("g")
+    .selectAll("g")
+    .data(color.domain())
+    .enter()
+    .append('g')
+      .attr('class', 'legend')
+      .attr('transform', function(d, i) {
+        var height = legendRectSize;
+        var x = 0;
+        var y = i * height;
+        return 'translate(' + x + ',' + y + ')';
+    });  
+	
+	legend.append('rect')
+    .attr('width', legendRectSize)
+    .attr('height', legendRectSize)
+    .style('fill', color)
+    .style('stroke', color);
+
+legend.append('text')
+    .attr('x', legendRectSize + legendSpacing)
+    .attr('y', legendRectSize - legendSpacing)
+    .text(function(d) { return d; });
 					   
 					console.log(color.domain())
 						  
