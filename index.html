@@ -142,6 +142,12 @@
 	                        .x(function(d) { return x_scale(d.payroll); })
 	                        .y(function(d) { return y_scale(d.wins); })
 	                        .clipExtent([[0, 0], [width, height]]);
+							
+			var color = d3.scale.category10();
+			
+			var legend_width = 100;
+			var legend_height = 60;
+			var legend_spacing = 5;
 		
 			d3.csv('./data/payroll.csv',
 				function(error, dataset)
@@ -173,8 +179,10 @@
 					//				        "#8c564b",
 					//				        "#c49c94", 
 					//				        "#e377c2"]);
+					
+					
 
-					var color = d3.scale.category10();
+					//var color = d3.scale.category10();
 					
 					svg.append("g")
 					     .attr("class", "x axis")
@@ -217,21 +225,21 @@
     .append('g')
       .attr('class', 'legend')
       .attr('transform', function(d, i) {
-        var height = legendRectSize;
+        var height = legend_height;
         var x = 0;
         var y = i * height;
         return 'translate(' + x + ',' + y + ')';
     });  
 	
 	legend.append('rect')
-    .attr('width', legendRectSize)
-    .attr('height', legendRectSize)
+    .attr('width', legend_width)
+    .attr('height', legend_height)
     .style('fill', color)
     .style('stroke', color);
 
 legend.append('text')
-    .attr('x', legendRectSize + legendSpacing)
-    .attr('y', legendRectSize - legendSpacing)
+    .attr('x', legend_width + legend_spacing)
+    .attr('y', legend_height - legend_spacing)
     .text(function(d) { return d; });
 					   
 					console.log(color.domain())
