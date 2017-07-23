@@ -215,6 +215,8 @@
 					   .attr('r', function(d) { return radius; })
 					   .attr('cx', function(d) { return x_scale(d.payroll); })
 					   .attr('cy', function(d) { return y_scale(d.wins); })
+					   .attr('id','viz_circle')
+					   .attr('team_name', function(d) { return d.team; })
 					   .style("fill", function(d) { return color(d.year); });
 					   
 					var legend = d3.select('svg')
@@ -253,11 +255,13 @@ legend.append('text')
 					   .style("stroke-opacity", 0.5)
 	                   .style("fill", "none")
 	                   .style("pointer-events", "all")
-					   .on("mouseover", function(d) {			   
+					   .on("mouseover", function(d) {	
+					   
 							tooltip.transition()
-								   .duration(200)
+								   .duration(500)
 							       .style("opacity", .9);
-				            tooltip.html( "<b> <center> Team Name: </b>"+ d.team + "</center>" )
+				            
+							tooltip.html( "<b> <center> Team Name: </b>"+ d.team + "</center>" )
                                    .style("left", (d3.event.pageX + 5) + "px")
                                    .style("top", (d3.event.pageY - 28) + "px");
 							
@@ -276,7 +280,20 @@ legend.append('text')
 							   .attr('stroke', 'gray')
 							   .attr('stroke-width', "1")
 							   .style("opacity", 0.9);
-                          })
+							   
+							//svg.selectAll("#viz_circle")
+							 //  .data(dataset)
+							//   .enter()
+							   
+							   d3.selectAll("#viz_circle")
+							     .each( function(d, i) {
+                                     if( line_d.team.valueOf() == d.team.valueOf()) 
+									 {
+										//console.log( d3.select(this).attr("cx") );
+											.attr("r", radius*3)
+									 }
+								 }
+                               })
 					   .on("mousemove", function(d) {
 							var coords = d3.mouse(this);
 							
