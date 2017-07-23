@@ -163,16 +163,19 @@
 					
 					var step = d3.max(dataset, function (d) { return d.wins; }) / 4
 					
-					color_range = d3.scale.ordinal().domain([1, 2, 3, 4, 5])
-									                .rangePoints([d3.min(dataset, function (d) { return d.payroll; }),
-									                              d3.max(dataset, function (d) { return d.payroll; })]);
-					color = d3.scale.linear()
-					                .domain(color_range.range())
-									.range(["#9467bd", 
-									        "#c5b0d5", 
-									        "#8c564b",
-									        "#c49c94", 
-									        "#e377c2"]);									 
+					//color_range = d3.scale.ordinal().domain([1, 2, 3, 4, 5])
+									             //   .rangePoints([d3.min(dataset, function (d) { return d.payroll; }),
+									              //                d3.max(dataset, function (d) { return d.payroll; })]);
+					//color = d3.scale.linear()
+					 //               .domain(color_range.range())
+					//				.range(["#9467bd", 
+					//				        "#c5b0d5", 
+					//				        "#8c564b",
+					//				        "#c49c94", 
+					//				        "#e377c2"]);
+
+					var color = d3.scale.category10();
+					
 					svg.append("g")
 					     .attr("class", "x axis")
 						 .style("font", "14px times")
@@ -204,7 +207,9 @@
 					   .attr('r', function(d) { return radius; })
 					   .attr('cx', function(d) { return x_scale(d.payroll); })
 					   .attr('cy', function(d) { return y_scale(d.wins); })
-					   .style("fill", function(d) { return color(d.payroll); });
+					   .style("fill", function(d) { return color(d.year); });
+					   
+					console.log(color.domain())
 						  
 					svg.selectAll("path")
 					   .data(voronoi(dataset)) //Use vononoi() with your dataset inside
@@ -223,13 +228,8 @@
                                    .style("left", (d3.event.pageX + 5) + "px")
                                    .style("top", (d3.event.pageY - 28) + "px");
 							
-							console.log(d3.event.pageX)
-							console.log(d3.event.pageY)
-							
 							var coords = d3.mouse(this);
-							
-							console.log(coords)
-											
+								
 							svg.selectAll("#tooltip_line")
 							   .data(dataset)
 							   .enter()
