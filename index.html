@@ -229,12 +229,12 @@
 					legend.append('rect')
 						  .attr('width', legend_width*0.75)
 						  .attr('height', legend_height)
-						  .attr('x', legend_spacing)
+						  .attr('x', legend_spacing*2)
                           .style('fill', color)
                           .style('stroke', color);
 
 			        legend.append('text')
-                          .attr('x', legend_width + legend_spacing)
+                          .attr('x', legend_width*0.8 + legend_spacing)
                           .attr('y', legend_height)
                           .text(function(d) { return d; });
 					   
