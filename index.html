@@ -92,10 +92,8 @@
       </div>
 	  
 	  <div>
-	    <center>
 		<svg id="legend_svg">
 		</svg>
-		</center>
 	  </div>
 	  
 	  <div>
@@ -231,14 +229,13 @@
 					legend.append('rect')
 						  .attr('width', legend_width)
 						  .attr('height', legend_height)
-						  .attr('x', legent_spacing)
                           .style('fill', color)
                           .style('stroke', color);
 
 			        legend.append('text')
                           .attr('x', legend_width + legend_spacing)
                           .attr('y', legend_height)
-                          .text(function(d) { return d; });
+                          .text(function(d) { return d + "  "; });
 					   
 						  
 					svg.selectAll("path")
