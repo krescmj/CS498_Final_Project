@@ -316,8 +316,6 @@ legend.append('text')
                                .remove();
 							   
 							d3.selectAll("#viz_circle")
-							  .transition()
-							  .duration(transition_duration)
 							  .each( function(circle_d, i) {
 									d3.select(this).attr("r", radius);
 									d3.select(this).attr("opacity", null);
