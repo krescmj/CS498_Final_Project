@@ -222,14 +222,14 @@
 										   .attr('class', 'legend')
 										   .attr('transform', function(d, i)
 															  {
-																 var x = i * legend_width * 2 + 7;
+																 var x = i * legend_width * 2;
 																 return 'translate(' + x + ', 0)';
 															  });  
 	
 					legend.append('rect')
 						  .attr('width', legend_width)
 						  .attr('height', legend_height)
-						  .attr('x', legend_spacing + 7)
+						  .attr('x', legend_spacing)
                           .style('fill', color)
                           .style('stroke', color);
 
@@ -254,7 +254,7 @@
 								   .duration(transition_duration)
 							       .style("opacity", .9);
 				            
-							tooltip.html( "<b> <center> Team Name: </b>"+ d.team + "</center>" )
+							tooltip.html( "<b> <center> Team: </b>"+ d.team + "</center>" )
                                    .style("left", (d3.event.pageX + 5) + "px")
                                    .style("top", (d3.event.pageY - 28) + "px");
 							
