@@ -222,19 +222,19 @@
 										   .attr('class', 'legend')
 										   .attr('transform', function(d, i)
 															  {
-																 var x = i * legend_width * 2;
+																 var x = (i * legend_width * 2) + 7;
 																 return 'translate(' + x + ', 0)';
 															  });  
 	
 					legend.append('rect')
 						  .attr('width', legend_width)
 						  .attr('height', legend_height)
-						  .attr('x', legend_spacing + 7)
+						  .attr('x', legend_spacing)
                           .style('fill', color)
                           .style('stroke', color);
 
 			        legend.append('text')
-                          .attr('x', legend_width + legend_spacing + 7 + 7)
+                          .attr('x', legend_width + legend_spacing + 7)
                           .attr('y', legend_height)
                           .text(function(d) { return d; });
 					   
