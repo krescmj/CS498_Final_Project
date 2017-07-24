@@ -272,9 +272,9 @@ legend.append('text')
 							   .attr('id', 'tooltip_line')
 							   .attr('stroke', 'gray')
 							   .attr('stroke-width', "1")
-							 //  .transition()
-							 //  .duration(transition_duration)
-							//   .style("opacity", 0.9);
+							   .transition()
+							   .duration(transition_duration)
+							   .style("opacity", 0.9);
 							   
 							   d3.selectAll("#viz_circle")
 							     .each( function(circle_d, i) {
