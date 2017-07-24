@@ -284,13 +284,13 @@
 										d3.select(this).transition()
 													   .duration(transition_duration)
 													   .attr("r", radius*2.0)
-										               .attr("opacity", null);
+										               .style("opacity", null);
 									 }
 									 else
 									 {
 										d3.select(this).transition()
 													   .duration(transition_duration)
-													   .attr("opacity", 0.2)
+													   .style("opacity", 0.2)
 										               .attr("r", radius);
 									 }
 								 })
@@ -321,7 +321,7 @@
 									d3.select(this).transition()
 								                   .duration(transition_duration)
 									               .attr("r", radius)
-									               .attr("opacity", null);
+									               .style("opacity", null);
 							  });			   
                        });		
 				}	
