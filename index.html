@@ -308,7 +308,9 @@ legend.append('text')
 					   })
 					   .on("mouseout", function(d) {
 					   
-                            tooltip.style("opacity", 0);
+                            tooltip.transition()
+								   .duration(transition_duration)
+								   .style("opacity", 0);
 								   
 						    svg.selectAll("#tooltip_line")
                                .remove();
