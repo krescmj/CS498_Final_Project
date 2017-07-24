@@ -276,7 +276,7 @@ legend.append('text')
 							   .duration(transition_duration)
 							   .style("opacity", 0.9);
 							   
-							   d3.selectAll("#viz_circle")
+							 svg.selectAll("#viz_circle")
 							     .each( function(circle_d, i) {
                                      if( circle_d.team.valueOf() == d.team.valueOf() ) 
 									 {
@@ -315,7 +315,7 @@ legend.append('text')
 						    svg.selectAll("#tooltip_line")
                                .remove();
 							   
-							d3.selectAll("#viz_circle")
+							svg.selectAll("#viz_circle")
 							  .each( function(circle_d, i) {
 									d3.select(this).attr("r", radius);
 									d3.select(this).attr("opacity", null);
