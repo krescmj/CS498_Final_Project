@@ -287,8 +287,10 @@ legend.append('text')
 									 }
 									 else
 									 {
-										d3.select(this).attr("opacity", 0.2);
-										d3.select(this).attr("r", radius);
+										d3.select(this).transition()
+													   .duration(transition_duration)
+													   .attr("opacity", 0.2)
+										               .attr("r", radius);
 									 }
 								 })
 						})		 
