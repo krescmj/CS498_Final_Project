@@ -157,7 +157,7 @@
 			
 			var legend_width = 30;
 			var legend_height = 15;
-			var legend_spacing = 3;
+			var legend_spacing = 10;
 			
 			var transition_duration = 500;
 		
@@ -234,7 +234,7 @@
                           .style('stroke', color);
 
 			        legend.append('text')
-                          .attr('x', legend_width + legend_spacing + 7)
+                          .attr('x', legend_width + legend_spacing)
                           .attr('y', legend_height)
                           .text(function(d) { return d; });
 					   
