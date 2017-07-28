@@ -153,13 +153,13 @@
 	                        .y(function(d) { return y_scale(d.wins); })
 	                        .clipExtent([[0, 0], [width, height]]);
 							
-			var color = d3.scale.category10();
+			var color = d3.scale.category20();
 			
 			var legend_width = 30;
 			var legend_height = 15;
 			var legend_spacing = 10;
 			
-			var transition_duration = 500;
+			var transition_duration = 750;
 		
 			d3.csv('./data/payroll.csv',
 				function(error, dataset)
