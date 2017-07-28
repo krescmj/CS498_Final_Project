@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sticky Footer Navbar Template for Bootstrap</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <!-- <link href="css/starter-template.css" rel="stylesheet"> -->
+    <!-- <link href="css/styles.css" rel="stylesheet"> -->
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="./css/ie10-viewport-bug-workaround.css" rel="stylesheet">  -->
+
+    <!-- Custom styles for this template -->
+    <link href="./css/sticky-footer-navbar.css" rel="stylesheet">
+	
+	<style>
+
+	body {
+	  font: 12px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+
+	.dot {
+	  stroke: #000;
+	}
+	
+	div.tooltip {	
+    position: absolute;			
+    text-align: center;								
+    padding: 2px;				
+    font: 16px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+	</style>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">CS498 Final Project</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+		    <li><a href="index.html">Introduction</a></li>
+            <li><a href="scene1.html">Regular Season Wins</a></li>
+            <li><a href="scene2.html">Playoff Wins</a></li>
+			<li><a href="scene3.html">World Series Wins</a></li>
+			<li><a href="explore.html">Exploration</a><li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <!-- Begin page content -->
+    <div class="container" id="data_viz">
+      <div class="page-header">
+        <h1><center>MLB Baseball Team Payroll Versus Wins<center></h1>
+      </div>
+	  
+	  <div>
+		<svg id="legend_svg">
+		</svg>
+	  </div>
+	  
+	  <div>
+		<svg id="data_viz_svg">
+		</svg>
+	  </div>
+	  
+	  <p class="lead">2006 - 2016 Data (mlb.com)</p>
+
+    </div>
+	
+	</div>  <!-- /container -->
+	 
+	<div class = "container">
+	 <div class="page-header">
+        <h3>About the Visualization</h3>
+      </div>
+      <div class="well">
+	  
+		<p>This visualization follows the martini glass interactive visualization structure. The visualization
+		   consists of <b> 4 scenes </b>. Each scene depicts the 
+		</p>
+	  
+        <p> This Visualization follows the Interactive Slide show hybrid structure. Slide 1 depicts a
+		<b>Scene </b> that conveys to the user, the impact of Malaria on the entire World Population. 
+		It shows the effect this disease has had on the population, in terms of the number of reported
+		cases, and the number of reported deaths, in the past 5 years. These are both displayed using
+		two separate line graphs. The Line Graphs are sized the same, have the same type of annotated
+		tool tip, and the follow the same set of triggers driven by the user interaction of mousing 
+		over the graph, thereby providing the user with a consistent visual structure when viewing 
+		this scene. The <b> Annotations </b> in Slide 1 are displayed when the user <b> Triggers </b>
+		a mouse over event. They show the number of reported cases of Malaria and number of reported 
+		deaths caused by Malaria, depending on which graph is moused over, and which year in the 
+		graph that the user mouses over. These annotations are removed, when the user triggers a 
+		mouses out event. The Line Graphs are also annotated with corresponding axes. 
+		Additional <b> Annotations </b> are the SVG circles that display the percentage
+		reduction in the number of malaria cases, and the number of malaria deaths over the displayed
+		time frame. The <b> Parameter </b> used in Slide 1 is the choice to animate the aforementioned 
+		SVG circles. This is <b> Triggered </b> by the page loading. This brings to the attention of the user, the percentage 
+		reductions in malaria related cases and deaths, that have been achieved during the displayed 
+		time frame. Additional <b> Parameters </b> in this Interactive Slide show are defined by the 
+		Slide Numbers that the User can click on, to advance the presentation. These are provided both 
+		in a navigation bar at the top of the page, and as Navigation buttons at the bottom of the page. 
+		These Parameters determine which slide is displayed to the user. The user can Trigger a 
+		change in the scenes contained within the Slide show, by modifying these Parameters. 
+		</p>
+      </div>
+	</div>
+
+      <div class="container">
+	    <div class="col-lg-1 text-center" >
+        <a href="Introduction.html">
+        <button type="button" class="btn btn-default btn-lg ">
+        <span class="glyphicon glyphicon-menu-left" aria-hidden="true">Intro</span> 
+        </button></a>
+        </div>
+		
+		<div class="col-lg-11 text-center" >
+        <a href="Slide2.html">
+        <button type="button" class="btn btn-default btn-lg ">Slide 2
+        <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> 
+        </button></a>
+        </div>
+
+		
+      </div>
+
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted"><center>Author: Michael Kresca</center></p>
+      </div>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+          integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  
+  		<script>
+			var radius = 6;
+		
+			var margin = {top: 20, right: 20, bottom: 60, left: 40},
+				height = parseInt(window.getComputedStyle(document.getElementById("data_viz")).height) - margin.top - margin.bottom,
+				width =  parseInt(window.getComputedStyle(document.getElementById("data_viz")).width)  - margin.left - margin.right;
+			
+		    var x_scale = d3.scale.linear().range([radius+2, width-radius-2]),
+				x_axis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(5),
+			    y_scale = d3.scale.linear().range([height-radius-2, radius+2]),
+				y_axis = d3.svg.axis().scale(y_scale).orient("left");
+				
+			var svg = d3.select("#data_viz_svg")
+			            .attr("height", height + margin.top + margin.bottom)
+			            .attr("width", width + margin.left + margin.right)
+						.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+						
+			var legend_svg = d3.select("#legend_svg")
+			                   .attr("width", width + margin.left + margin.right)
+							   .attr("height", 20)
+							   .append("g").attr("transform", "translate(" + margin.left + ",0)");
+
+			var tooltip = d3.select("body").append("div")
+						    .attr("class", "tooltip")
+						    .style("opacity", 0);
+							
+			var voronoi = d3.geom.voronoi()
+	                        .x(function(d) { return x_scale(d.payroll); })
+	                        .y(function(d) { return y_scale(d.wins); })
+	                        .clipExtent([[0, 0], [width, height]]);
+							
+			var color = d3.scale.category20();
+			
+			var legend_width = 30;
+			var legend_height = 15;
+			var legend_spacing = 10;
+			
+			var transition_duration = 750;
+		
+			d3.csv('./data/payroll.csv',
+				function(error, dataset)
+				{
+					console.log(error);
+				
+					// cast to an integer
+					dataset.forEach(function(d) {
+						d.payroll = +d.payroll;
+						d.year = +d.year;
+						d.wins = +d.wins;
+					});
+					
+					x_scale.domain([ d3.min(dataset, function (d) { return d.payroll; }), 
+							         d3.max(dataset, function (d) { return d.payroll; })]);	
+
+					y_scale.domain([ d3.min(dataset, function (d) { return d.wins; }), 
+								     d3.max(dataset, function (d) { return d.wins; })]);
+					
+					svg.append("g")
+					     .attr("class", "x axis")
+						 .style("font", "14px times")
+					     .attr("transform", "translate(0," + height + ")")
+						 .call(x_axis)
+						 .append("text")
+						 .attr("class", "label")
+						 .style("text-anchor", "middle")
+						 .attr("x", width/2)
+						 .attr("y", 30)
+						 .text("Payroll (dollars)");
+
+					svg.append("g")
+					     .attr("class", "y axis")
+						 .style("font", "14px times")
+						 .call(y_axis)
+						 .append("text")
+						 .attr("class", "label")
+						 .attr("transform", "rotate(-90)")
+                         .attr("y", -30)
+					     .style("text-anchor", "middle")
+						 .attr("x", -height/2)
+						 .text("Wins (number)");
+								
+			        svg.selectAll('circle')
+					   .data(dataset)
+					   .enter()
+					   .append('circle')
+					   .attr('r', function(d) { return radius; })
+					   .attr('cx', function(d) { return x_scale(d.payroll); })
+					   .attr('cy', function(d) { return y_scale(d.wins); })
+					   .attr('id','viz_circle')
+					   .attr('team_name', function(d) { return d.team; })
+					   .style("fill", function(d) { return color(d.year); });
+					   
+					var legend = legend_svg.append("g")
+										   .selectAll("g")
+										   .data(color.domain())
+										   .enter()
+										   .append('g')
+										   .attr('class', 'legend')
+										   .attr('transform', function(d, i)
+															  {
+																 var x = (i * legend_width * 2) + 7;
+																 return 'translate(' + x + ', 0)';
+															  });  
+	
+					legend.append('rect')
+						  .attr('width', legend_width*0.75)
+						  .attr('height', legend_height)
+						  .attr('x', legend_spacing)
+                          .style('fill', color)
+                          .style('stroke', color);
+
+			        legend.append('text')
+                          .attr('x', legend_width*0.8 + legend_spacing)
+                          .attr('y', legend_height)
+                          .text(function(d) { return d; });
+					   
+						  
+					svg.selectAll("path")
+					   .data(voronoi(dataset)) //Use vononoi() with your dataset inside
+					   .enter()
+					   .append("path")
+	                   .attr("d", function(d, i) { return "M" + d.join("L") + "Z"; })
+	                   .datum(function(d, i) { return d.point; })
+					   .style("stroke-opacity", 0.5)
+	                   .style("fill", "none")
+	                   .style("pointer-events", "all")
+					   .on("mouseover", function(d) {	
+					   
+							tooltip.transition()
+								   .duration(transition_duration)
+							       .style("opacity", .9);
+				            
+							tooltip.html( "<b> <center> Team: </b>"+ d.team + "</center>" )
+                                   .style("left", (d3.event.pageX + 5) + "px")
+                                   .style("top", (d3.event.pageY - 28) + "px");
+							
+							var coords = d3.mouse(this);
+								
+							svg.selectAll("#tooltip_line")
+							   .data(dataset)
+							   .enter()
+							   .append('line')
+							   .style("opacity",0)
+							   .filter(function(line_d){ return line_d.team.valueOf() == d.team.valueOf();})
+							   .attr('x1', (coords[0] + 15) + "px")
+							   .attr('x2', function(d) { return x_scale(d.payroll); })
+							   .attr('y1', (coords[1] - 5) + "px")
+							   .attr('y2', function(d) { return y_scale(d.wins); })
+							   .attr('id', 'tooltip_line')
+							   .attr('stroke', 'gray')
+							   .attr('stroke-width', "1")
+							   .transition()
+							   .duration(transition_duration)
+							   .style("opacity", 0.9);
+							   
+							 svg.selectAll("#viz_circle")
+							     .each( function(circle_d, i) {
+                                     if( circle_d.team.valueOf() == d.team.valueOf() ) 
+									 {
+										d3.select(this).transition()
+													   .duration(transition_duration)
+													   .attr("r", radius*2.0)
+										               .style("opacity", 1.0);
+									 }
+									 else
+									 {
+										d3.select(this).transition()
+													   .duration(transition_duration)
+													   .style("opacity", 0.3)
+										               .attr("r", radius);
+									 }
+								 })
+						})		 
+					   .on("mousemove", function(d) {
+							var coords = d3.mouse(this);
+							
+							tooltip.html( "<b> Team Name: </b>"+ d.team )
+                                   .style("left", (d3.event.pageX + 5) + "px")
+                                   .style("top", (d3.event.pageY - 28) + "px");
+							
+							svg.selectAll("#tooltip_line")
+							   .attr('x1', (coords[0] + 5) + "px")
+							   .attr('y1', (coords[1] - 28) + "px")
+
+					   })
+					   .on("mouseout", function(d) {
+					   
+                            tooltip.transition()
+								   .duration(transition_duration)
+								   .style("opacity", 0);
+								   
+						    svg.selectAll("#tooltip_line")
+                               .remove();
+							   
+							svg.selectAll("#viz_circle")
+							  .each( function(circle_d, i) {
+									d3.select(this).transition()
+								                   .duration(transition_duration)
+									               .attr("r", radius)
+									               .style("opacity", 1.0);
+							  });			   
+                       });		
+				}	
+			);
+		</script>
+  
+  </body>
+</html>

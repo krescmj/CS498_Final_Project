@@ -73,35 +73,75 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">MLB Payroll Investment Payback</a>
+          <a class="navbar-brand" href="#">CS498 Final Project</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#about">Wins</a></li>
-            <li><a href="#contact">World Series Wins</a></li>
-			<li><a href="#contact">Explore</a></li>
+		    <li><a href="index.html">Introduction</a></li>
+            <li><a href="scene1.html">Regular Season Wins</a></li>
+            <li><a href="scene2.html">Playoff Wins</a></li>
+			<li><a href="scene3.html">World Series Wins</a></li>
+			<li><a href="explore.html">Exploration</a><li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <!-- Begin page content -->
-    <div class="container" id="data_viz">
-      <div class="page-header">
-        <h1><center>MLB Baseball Team Payroll Versus Wins<center></h1>
+	<div class="container>
+	
+		<div class="page-header">
+			<h1>Major League Baseball - Team Performance Versus Player Payroll</h1>
+		</div>
+		
+		<div class="intropara1">
+			Those who follow Major League Baseball know that it is common place for professional players to be paid several 
+			million dollars a year. For most of the season, the number of players allowed on a roster is 25 players. This number
+			may not seem like a lot, but this puts the total payroll for the players on a typical team in tens of milions of 
+			dollars, sometimes even higher. Does this investment payoff? Are the teams who have the highest payroll the most
+			successful? This visualization on this website is intended to help answer those questions. It also provides an
+			an avenue for the user to further investigate other questions which might be raised while interacting.
+		
+			All of data for this website was taken from <a href= http://www.stevetheump.com > stevethehump.com </a> and
+			<a href=http://mlb.mlb.com/stats > mlb.com </a>.
+
+			The implementation toolset for all the pages in this visualization is Bootstrap, HTML, CSS, Javascript and D3. 
+			All of the templates and javascript library's which were utilized during the creation of this visualization
+			on the website are distributed under the GNU General Public License.
+		
+		</div>
+		
+		<div class="intropara2">
+		
+		</div>
+	
+	</div>  <!-- /container -->
+	 
+	<div class = "container">
+		<div class="page-header">
+			<h3>About the Visualization</h3>
+		</div>
+		
+      <div class="well">
+	  
+		<p>
+			This visualization follows the martini glass interactive structure. Each scene shows how an individual team 
+			performs given their total player payroll investment over the last 10 years. Each visualization was built 
+			using the d3.js javascript library. Each slide has a section that describes how that specific visualization 
+			effectively utilizes scenes, annotations, parameters and triggers.
+		</p>
+		
       </div>
-	  
-	  <div>
-		<svg id="legend_svg">
-		</svg>
-	  </div>
-	  
-	  <div>
-		<svg id="data_viz_svg">
-		</svg>
-	  </div>
-	  
-	  <p class="lead">2006 - 2016 Data (mlb.com)</p>
+	</div>
+
+    <div class="container">
+		
+		<div class="col-lg-11 text-center" >
+        <a href="Slide2.html">
+        <button type="button" class="btn btn-default btn-lg ">Slide 2
+        <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> 
+        </button></a>
+        </div>
 
     </div>
 
@@ -121,212 +161,7 @@
           integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
           crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-  
-  		<script>
-			var radius = 6;
-		
-			var margin = {top: 20, right: 20, bottom: 60, left: 40},
-				height = parseInt(window.getComputedStyle(document.getElementById("data_viz")).height) - margin.top - margin.bottom,
-				width =  parseInt(window.getComputedStyle(document.getElementById("data_viz")).width)  - margin.left - margin.right;
-			
-		    var x_scale = d3.scale.linear().range([radius+2, width-radius-2]),
-				x_axis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(5),
-			    y_scale = d3.scale.linear().range([height-radius-2, radius+2]),
-				y_axis = d3.svg.axis().scale(y_scale).orient("left");
-				
-			var svg = d3.select("#data_viz_svg")
-			            .attr("height", height + margin.top + margin.bottom)
-			            .attr("width", width + margin.left + margin.right)
-						.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-						
-			var legend_svg = d3.select("#legend_svg")
-			                   .attr("width", width + margin.left + margin.right)
-							   .attr("height", 20)
-							   .append("g").attr("transform", "translate(" + margin.left + ",0)");
-
-			var tooltip = d3.select("body").append("div")
-						    .attr("class", "tooltip")
-						    .style("opacity", 0);
-							
-			var voronoi = d3.geom.voronoi()
-	                        .x(function(d) { return x_scale(d.payroll); })
-	                        .y(function(d) { return y_scale(d.wins); })
-	                        .clipExtent([[0, 0], [width, height]]);
-							
-			var color = d3.scale.category20();
-			
-			var legend_width = 30;
-			var legend_height = 15;
-			var legend_spacing = 10;
-			
-			var transition_duration = 750;
-		
-			d3.csv('./data/payroll.csv',
-				function(error, dataset)
-				{
-					console.log(error);
-				
-					// cast to an integer
-					dataset.forEach(function(d) {
-						d.payroll = +d.payroll;
-						d.year = +d.year;
-						d.wins = +d.wins;
-					});
-					
-					x_scale.domain([ d3.min(dataset, function (d) { return d.payroll; }), 
-							         d3.max(dataset, function (d) { return d.payroll; })]);	
-
-					y_scale.domain([ d3.min(dataset, function (d) { return d.wins; }), 
-								     d3.max(dataset, function (d) { return d.wins; })]);
-					
-					svg.append("g")
-					     .attr("class", "x axis")
-						 .style("font", "14px times")
-					     .attr("transform", "translate(0," + height + ")")
-						 .call(x_axis)
-						 .append("text")
-						 .attr("class", "label")
-						 .style("text-anchor", "middle")
-						 .attr("x", width/2)
-						 .attr("y", 30)
-						 .text("Payroll (dollars)");
-
-					svg.append("g")
-					     .attr("class", "y axis")
-						 .style("font", "14px times")
-						 .call(y_axis)
-						 .append("text")
-						 .attr("class", "label")
-						 .attr("transform", "rotate(-90)")
-                         .attr("y", -30)
-					     .style("text-anchor", "middle")
-						 .attr("x", -height/2)
-						 .text("Wins (number)");
-								
-			        svg.selectAll('circle')
-					   .data(dataset)
-					   .enter()
-					   .append('circle')
-					   .attr('r', function(d) { return radius; })
-					   .attr('cx', function(d) { return x_scale(d.payroll); })
-					   .attr('cy', function(d) { return y_scale(d.wins); })
-					   .attr('id','viz_circle')
-					   .attr('team_name', function(d) { return d.team; })
-					   .style("fill", function(d) { return color(d.year); });
-					   
-					var legend = legend_svg.append("g")
-										   .selectAll("g")
-										   .data(color.domain())
-										   .enter()
-										   .append('g')
-										   .attr('class', 'legend')
-										   .attr('transform', function(d, i)
-															  {
-																 var x = (i * legend_width * 2) + 7;
-																 return 'translate(' + x + ', 0)';
-															  });  
-	
-					legend.append('rect')
-						  .attr('width', legend_width*0.75)
-						  .attr('height', legend_height)
-						  .attr('x', legend_spacing)
-                          .style('fill', color)
-                          .style('stroke', color);
-
-			        legend.append('text')
-                          .attr('x', legend_width*0.8 + legend_spacing)
-                          .attr('y', legend_height)
-                          .text(function(d) { return d; });
-					   
-						  
-					svg.selectAll("path")
-					   .data(voronoi(dataset)) //Use vononoi() with your dataset inside
-					   .enter()
-					   .append("path")
-	                   .attr("d", function(d, i) { return "M" + d.join("L") + "Z"; })
-	                   .datum(function(d, i) { return d.point; })
-					   .style("stroke-opacity", 0.5)
-	                   .style("fill", "none")
-	                   .style("pointer-events", "all")
-					   .on("mouseover", function(d) {	
-					   
-							tooltip.transition()
-								   .duration(transition_duration)
-							       .style("opacity", .9);
-				            
-							tooltip.html( "<b> <center> Team: </b>"+ d.team + "</center>" )
-                                   .style("left", (d3.event.pageX + 5) + "px")
-                                   .style("top", (d3.event.pageY - 28) + "px");
-							
-							var coords = d3.mouse(this);
-								
-							svg.selectAll("#tooltip_line")
-							   .data(dataset)
-							   .enter()
-							   .append('line')
-							   .style("opacity",0)
-							   .filter(function(line_d){ return line_d.team.valueOf() == d.team.valueOf();})
-							   .attr('x1', (coords[0] + 15) + "px")
-							   .attr('x2', function(d) { return x_scale(d.payroll); })
-							   .attr('y1', (coords[1] - 5) + "px")
-							   .attr('y2', function(d) { return y_scale(d.wins); })
-							   .attr('id', 'tooltip_line')
-							   .attr('stroke', 'gray')
-							   .attr('stroke-width', "1")
-							   .transition()
-							   .duration(transition_duration)
-							   .style("opacity", 0.9);
-							   
-							 svg.selectAll("#viz_circle")
-							     .each( function(circle_d, i) {
-                                     if( circle_d.team.valueOf() == d.team.valueOf() ) 
-									 {
-										d3.select(this).transition()
-													   .duration(transition_duration)
-													   .attr("r", radius*2.0)
-										               .style("opacity", 1.0);
-									 }
-									 else
-									 {
-										d3.select(this).transition()
-													   .duration(transition_duration)
-													   .style("opacity", 0.3)
-										               .attr("r", radius);
-									 }
-								 })
-						})		 
-					   .on("mousemove", function(d) {
-							var coords = d3.mouse(this);
-							
-							tooltip.html( "<b> Team Name: </b>"+ d.team )
-                                   .style("left", (d3.event.pageX + 5) + "px")
-                                   .style("top", (d3.event.pageY - 28) + "px");
-							
-							svg.selectAll("#tooltip_line")
-							   .attr('x1', (coords[0] + 5) + "px")
-							   .attr('y1', (coords[1] - 28) + "px")
-
-					   })
-					   .on("mouseout", function(d) {
-					   
-                            tooltip.transition()
-								   .duration(transition_duration)
-								   .style("opacity", 0);
-								   
-						    svg.selectAll("#tooltip_line")
-                               .remove();
-							   
-							svg.selectAll("#viz_circle")
-							  .each( function(circle_d, i) {
-									d3.select(this).transition()
-								                   .duration(transition_duration)
-									               .attr("r", radius)
-									               .style("opacity", 1.0);
-							  });			   
-                       });		
-				}	
-			);
-		</script>
+ 
   
   </body>
 </html>
