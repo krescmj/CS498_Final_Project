@@ -135,15 +135,17 @@
       <div class="well">
 		<p>
 			This visualization follows the martini glass interactive structure. This <b>scene</b> conveys to the user that
-			during the last 10 years there is a general trend that those who spend more on player salaries win more games
+			there is a general trend during the last 10 years that those teams spend more on player salaries win more games
             during the regular season. The <b>annotations</b> used on the scene are a tool tip and axis labels. The 
 			<b>parameter</b> used is the choice to animate the tooltip, data points, and the lines connecting the tool tip 
 			to the individual data points. This animation gets <b>triggered</b> by mouse events. On a mouse-on event, the
-            the parameter gets <b>triggered</b> to select those data points which correspond to the same team a	enlarge them.
+            the parameter gets changed by the <b>trigger</b> to select those data points which correspond to the same team
+            and enlarge them.
             Those data points which correspoind to other teams are slightly faded so as to indicate to the user these data
-			points do not meet the selection criteria. The tool tip and connecting lines are also displayed. On mouse-out events,
-			the parameter gets <b>triggered</b> to set all datapoints to the same opacity and size. The tool tip and connecting
-			lines are also removed. Addtional <b>parameters</b> are the slide numbers that the user can click on to move through
+			points do not meet the selection criteria. The tool tip and connecting lines are also displayed as a result
+			of this <b>trigger</b>. On mouse-out events,
+			the parameter gets again changed by the <b>trigger</b> to set all datapoints to the same opacity and size. The tool tip and connecting
+			lines are also removed. Addtional <b>parameters</b> used are the slide numbers that the user can click on to move through
 			the visualization. These <b>parameters</b> determine which slide is displayed to the user when the user <b>triggers</b>
 			a change in the by selecting one of the buttons.
 		</p>
