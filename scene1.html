@@ -217,23 +217,21 @@
 								     d3.max(dataset, function (d) { return d.wins; })]);
 					
 					svg.append("g")
-					     .attr("class", "x axis")
-						 .style("font", "14px times")
+					     .attr("class", "axis axis--x")
 					     .attr("transform", "translate(0," + height + ")")
 						 .call(x_axis)
 						 .append("text")
-						 .attr("class", "label")
+						 .attr("class", "axis-title")
 						 .style("text-anchor", "middle")
 						 .attr("x", width/2)
 						 .attr("y", 30)
 						 .text("Payroll (dollars)");
 
 					svg.append("g")
-					     .attr("class", "y axis")
-						 .style("font", "14px times")
+					     .attr("class", "axis axis--x")
 						 .call(y_axis)
 						 .append("text")
-						 .attr("class", "label")
+						 .attr("class", "axis-title")
 						 .attr("transform", "rotate(-90)")
                          .attr("y", -30)
 					     .style("text-anchor", "middle")
