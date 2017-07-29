@@ -134,8 +134,18 @@
 		
       <div class="well">
 		<p>
-			This visualization follows the martini glass interactive structure. Each scene shows how an individual team 
-			performs given their total player payroll investment over the last 10 years. 
+			This visualization follows the martini glass interactive structure. This <b>scene</b> conveys to the user that
+			during the last 10 years there is a general trend that those who spend more on player salaries win more games
+            during the regular season. The <b>annotations</b> used on the scene are a tool tip and axis labels. The 
+			<b>parameter</b> used is the choice to animate the tooltip, data points, and the lines connecting the tool tip 
+			to the individual data points. This animation gets <b>triggered</b> by mouse events. On a mouse-on event, the
+            the parameter gets <b>triggered</b> to select those data points which correspond to the same team a	enlarge them.
+            Those data points which correspoind to other teams are slightly faded so as to indicate to the user these data
+			points do not meet the selection criteria. The tool tip and connecting lines are also displayed. On mouse-out events,
+			the parameter gets <b>triggered</b> to set all datapoints to the same opacity and size. The tool tip and connecting
+			lines are also removed. Addtional <b> parameters are the slide numbers that the user can click on to move through
+			the visualization. These <b>parameters</b> determine which slide is displayed to the user when the user <b>triggers</b>
+			a change in the by selecting one of the buttons.
 		</p>
       </div>
 
@@ -171,7 +181,7 @@
   		<script>
 			var radius = 6;
 		
-			var margin = {top: 20, right: 20, bottom: 60, left: 40},
+			var margin = {top: 10, right: 10, bottom: 50, left: 50},
 				//height = parseInt(window.getComputedStyle(document.getElementById("data_viz")).height) - margin.top - margin.bottom,
 				height = 550 - margin.top - margin.bottom
 				width =  parseInt(window.getComputedStyle(document.getElementById("data_viz")).width)  - margin.left - margin.right;
