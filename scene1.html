@@ -6,15 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Michael J Kresca">
 
-    <title>Sticky Footer Navbar Template for Bootstrap</title>
+    <title>Major League Baseball - Regular Season Wins Versus Player Payroll</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
           crossorigin="anonymous">
+		  
+	<!-- Bootstrap theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
+	crossorigin="anonymous">
+	
     <!-- <link href="css/starter-template.css" rel="stylesheet"> -->
     <!-- <link href="css/styles.css" rel="stylesheet"> -->
 
@@ -88,9 +94,28 @@
     </nav>
 
     <!-- Begin page content -->
-    <div class="container" id="data_viz">
+    <div class="container theme-showcase" role="main" id="data_viz">
       <div class="page-header">
-        <h1><center>MLB Baseball Team Payroll Versus Wins<center></h1>
+        <h1>Major League Baseball - Regular Season Wins Versus Player Payroll</h1>
+      </div>
+	  
+	  <div class="intropara1">
+			<p>
+				During the last 10 years, there have been few teams which have spent greater than $175 million
+				on player salaries. However, those that do, generally out perform those who dont. 
+				
+				<br>
+				
+				Below is a scatter plot showing the regular season wins for every team in major leagure baseball 
+				versus the amount of money they spent on payroll during the last 10 seasons. The general trend
+				is positive, which means that more money spent on player salaries generally results in more regular
+				season wins.
+				
+				<br>
+			
+				Mouse over any individual data point to see which team that datapoint applies to. All data points
+				which correspond to that specific team during any year will also be highlighted.
+			</p>
       </div>
 	  
 	  <div>
@@ -102,75 +127,38 @@
 		<svg id="data_viz_svg">
 		</svg>
 	  </div>
-	  
-	  <p class="lead">2006 - 2016 Data (mlb.com)</p>
-
-    </div>
-	
-	</div>  <!-- /container -->
-	 
-	<div class = "container">
-	 <div class="page-header">
-        <h3>About the Visualization</h3>
-      </div>
+			
+	  <div class="page-header">
+		<h3>About the Visualization</h3>
+	  </div>
+		
       <div class="well">
 	  
-		<p>This visualization follows the martini glass interactive visualization structure. The visualization
-		   consists of <b> 4 scenes </b>. Each scene depicts the 
+		<p>
+			This visualization follows the martini glass interactive structure. Each scene shows how an individual team 
+			performs given their total player payroll investment over the last 10 years. 
 		</p>
-	  
-        <p> This Visualization follows the Interactive Slide show hybrid structure. Slide 1 depicts a
-		<b>Scene </b> that conveys to the user, the impact of Malaria on the entire World Population. 
-		It shows the effect this disease has had on the population, in terms of the number of reported
-		cases, and the number of reported deaths, in the past 5 years. These are both displayed using
-		two separate line graphs. The Line Graphs are sized the same, have the same type of annotated
-		tool tip, and the follow the same set of triggers driven by the user interaction of mousing 
-		over the graph, thereby providing the user with a consistent visual structure when viewing 
-		this scene. The <b> Annotations </b> in Slide 1 are displayed when the user <b> Triggers </b>
-		a mouse over event. They show the number of reported cases of Malaria and number of reported 
-		deaths caused by Malaria, depending on which graph is moused over, and which year in the 
-		graph that the user mouses over. These annotations are removed, when the user triggers a 
-		mouses out event. The Line Graphs are also annotated with corresponding axes. 
-		Additional <b> Annotations </b> are the SVG circles that display the percentage
-		reduction in the number of malaria cases, and the number of malaria deaths over the displayed
-		time frame. The <b> Parameter </b> used in Slide 1 is the choice to animate the aforementioned 
-		SVG circles. This is <b> Triggered </b> by the page loading. This brings to the attention of the user, the percentage 
-		reductions in malaria related cases and deaths, that have been achieved during the displayed 
-		time frame. Additional <b> Parameters </b> in this Interactive Slide show are defined by the 
-		Slide Numbers that the User can click on, to advance the presentation. These are provided both 
-		in a navigation bar at the top of the page, and as Navigation buttons at the bottom of the page. 
-		These Parameters determine which slide is displayed to the user. The user can Trigger a 
-		change in the scenes contained within the Slide show, by modifying these Parameters. 
-		</p>
-      </div>
-	</div>
-
-      <div class="container">
-	    <div class="col-lg-1 text-center" >
-        <a href="Introduction.html">
-        <button type="button" class="btn btn-default btn-lg ">
-        <span class="glyphicon glyphicon-menu-left" aria-hidden="true">Intro</span> 
-        </button></a>
-        </div>
-		
-		<div class="col-lg-11 text-center" >
-        <a href="Slide2.html">
-        <button type="button" class="btn btn-default btn-lg ">Slide 2
-        <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> 
-        </button></a>
-        </div>
-
 		
       </div>
 
+	  <div class="container">
+			
+			<div class="col-lg-11 text-center" >
+			<a href="index.html">
+			<button type="button" class="btn btn-default btn-lg ">Regular Season Wins
+			<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> 
+			</button></a>
 
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted"><center>Author: Michael Kresca</center></p>
-      </div>
-    </footer>
+			<a href="scene1.html">
+			<button type="button" class="btn btn-default btn-lg ">Regular Season Wins
+			<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> 
+			</button></a>
+			</div>
 
-
+	  </div>
+	 
+	</div> 
+	 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
